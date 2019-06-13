@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/sdie.css}" rel="stylesheet"/>
+</head>
+<body>
+
+    <!-- 侧边栏 -->
+    <div id="side" th:fragment="side">
+        <div id="list">
+            <ul>
+                <li><a class="nav-link" th:href="@{/type_manage}">栏目管理</a></li>
+                <li><a class="nav-link" th:href="@{/picture_manage}">角色管理</a></li>
+                <li><a class="nav-link" th:href="@{/role_manage}">用户管理</a></li>
+                <li><a class="nav-link" th:href="@{/user_manage}">博客管理</a></li>
+                <li><a class="nav-link" th:href="@{/picture_user_manage}">评论管理</a></li>
+                <li><a class="nav-link" th:href="@{/login.html}">回复管理</a></li>
+            </ul>
+        </div>
+        <div id="blank"></div>
+    </div>
+
+</body>
+</html>

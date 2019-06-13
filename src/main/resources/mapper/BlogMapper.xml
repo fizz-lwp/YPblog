@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.mapper.BlogMapper" >
+
+    <resultMap id="blog" type="Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="text" column="text"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="lastModifyTime" column="last_modify_time"/>
+        <result property="recommend" column="recommend"/>
+        <result property="readCount" column="read_count"/>
+        <result property="collectCount" column="collect_count"/>
+        <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
+        <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
+        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
+    </resultMap>
+
+    <resultMap id="blog_index" type="Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="readCount" column="read_count"/>
+        <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
+        <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
+    </resultMap>
+
+    <select id="selectById" resultType="Blog" parameterType="int">
+        select * from blog where id = #{id};
+    </select>
+
+    <select id="selectByIdFull" parameterType="int" resultMap="blog">
+        select * from blog where id = #{id};
+    </select>
+
+    <select id="selectCountByUserId" parameterType="int" resultType="_integer">
+        select count(*) from blog where user_id = #{userId};
+    </select>
+
+    <select id="selectLatestLimit6" resultMap="blog_index">
+        select * from blog order by publish_time desc limit 6;
+    </select>
+
+    <select id="selectRecommendLimit6" resultMap="blog_index">
+        select * from blog where recommend = 1 limit 6;
+    </select>
+
+    <select id="selectHotestLimit6" resultMap="blog_index">
+        select * from blog order by read_count desc limit 6;
+    </select>
+
+    <insert id="insert" parameterType="Blog">
+        insert into blog value(null,#{type.id},#{user.id},#{title},#{publishTime},#{recommend},#{readCount},#{collectCount},#{content},#{lastModifyTime});
+    </insert>
+
+    <update id="update" parameterType="Blog">
+      update blog
+      <trim prefix="set" suffixOverrides=",">
+          <if test="type != null and type.id != null">
+            type_id = #{type.id},
+          </if>
+          <if test="user != null and user.id != null">
+            user_id = #{user.id},
+          </if>
+          <if test="title != null and title != ''">
+            title = #{title},
+          </if>
+          <if test="publishTime != null">
+            publish_time = #{publishTime},
+          </if>
+          <if test="recommend != null">
+            recommend = #{recommend},
+          </if>
+          <if test="readCouont != null">
+            read_count = #{readCouont},
+          </if>
+          <if test="collectCouont != null">
+            collect_count = #{collectCouont},
+          </if>
+          <if test="content != null and content != ''">
+            content = #{content},
+          </if>
+          <if test="lastModifyTime != null">
+            last_modify_time = #{lastModifyTime},
+          </if>
+          <if test="text != null and text != ''">
+              text = #{text},
+          </if>
+      </trim>
+      where id = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        delete from blog where id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,20 @@
+*{
+  margin:0;
+  padding:0;
+}
+html,body{
+  height:100%;
+  width:100%;
+}
+#side{
+  background-color:#2F4F4F;
+  height:92%;
+  width:16%;
+  float:left;
+}
+#side li{
+  margin-left:5px;
+  margin-top:12px;
+  text-indent:18px;
+  font-size:15px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>阅读 blog</title>
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.css}" />
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+    <!-- 解析 HTML 容器 -->
+    <div id="test-editormd-view2">
+        <textarea th:text="${blog.text}"></textarea>
+    </div>
+<script th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+<script th:src="@{/editormd/lib/marked.min.js}"></script>
+<script th:src="@{/editormd/lib/prettify.min.js}"></script>
+<script th:src="@{/editormd/editormd.js}"></script>
+<!-- 解析 HTML -->
+<script type="text/javascript">
+    editormd.markdownToHTML("test-editormd-view2", {
+        htmlDecode : "style,script,iframe"
+    });
+</script>
+</body>
+</html>

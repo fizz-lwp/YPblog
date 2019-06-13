@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>登录界面</title>
+    <link th:href="@{/css/sample.css}" rel="stylesheet"/>
+    <style>
+        body{
+            background-color:#FAFAFA;
+        }
+        #form{
+            text-align: center;
+            width:250px;
+            height: 290px;
+            margin-left: 40%;
+            margin-top:5%;
+        }
+        #form h2{
+            margin-bottom:10px;
+        }
+        #form input{
+            display:block;
+            border-radius: 3px;
+            border:1px solid black;
+            margin-left: 9%;
+            margin-bottom: 15px;
+            height: 36px;
+            width: 80%;
+            padding-left: 5px;
+        }
+        #form a{
+            margin-left:60%;
+            color:black;
+        }
+        #form button{
+            margin-left: 2%;
+            margin-bottom:5px;
+            height: 36px;
+            width: 65%;
+            background-color: dodgerblue;
+            font-size: 18px;
+            border-radius: 5px;
+            border:1px solid white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- bar -->
+    <div th:replace="sample/sample::bar"></div>
+    <!-- 登录表单 -->
+    <div id="form">
+        <h2>登录</h2>
+        <form th:action="@{/login}" method="post">
+            <input type="text" name="name" placeholder="用户名"/>
+            <input type="password" name="password" placeholder="密码"/>
+            <a th:href="@{/forget_pwd.html}">忘记密码？</a>
+            <button type="submit">登&nbsp;&nbsp;&nbsp;录</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

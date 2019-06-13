@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>博客管理</title>
+    <link th:href="@{/css/bar_admin.css}" rel="stylesheet"/>
+    <link th:href="@{/css/side.css}" rel="stylesheet"/>
+    <link th:href="@{/css/manage.css}" rel="stylesheet"/>
+</head>
+<body>
+
+    <div th:replace="sample/bar_admin::bar_admin"></div>
+    <div th:replace="sample/side::side"></div>
+    <div th:replace="sample/manage::manage"></div>
+
+</body>
+</html>

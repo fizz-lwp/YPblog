@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blog.mapper.ReplyMapper" >
+
+    <resultMap id="reply" type="Reply">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="publishTime" column="publish_time"/>
+        <association property="sender" column="sender_id" select="com.blog.mapper.UserMapper.selectById"/>
+        <association property="receiver" column="receiver_id" select="com.blog.mapper.UserMapper.selectById"/>
+    </resultMap>
+
+    <select id="selectByCommentId" parameterType="int" resultMap="reply">
+      select * from reply where comment_id = #{commentId};
+    </select>
+
+    <select id="selectById" parameterType="int" resultType="Reply">
+      select * from reply where id = #{id};
+    </select>
+
+</mapper>

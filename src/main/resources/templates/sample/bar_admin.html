@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/sample.css}" rel="stylesheet"/>
+</head>
+<body>
+
+    <!-- 后台导航栏 -->
+    <div id="bar_admin" style="background-color: #4682B4; " th:fragment="bar_admin">
+        <div id="left">
+            <div id="logo"><a th:href="@{/index.html}">BLOG</a></div>
+        </div>
+        <div id="right">
+            <a th:href="@{/index.html}">admin</a>
+            <a th:href="@{/index.html}">admin</a>
+            <a th:href="@{/index.html}">admin</a>
+            <a th:href="@{/index.html}">admin</a>
+        </div>
+    </div>
+
+</body>
+</html>
