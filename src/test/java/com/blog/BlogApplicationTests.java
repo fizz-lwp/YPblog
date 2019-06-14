@@ -76,7 +76,7 @@ public class BlogApplicationTests {
 
     @Test
     public void testSelectLatest(){
-        List<Blog> blogList = blogMapper.selectLatestLimit6();
+        List<Blog> blogList = blogMapper.selectLatestLimit4();
         for(Blog e:blogList){
             System.out.println(e);
         }
@@ -84,7 +84,7 @@ public class BlogApplicationTests {
 
     @Test
     public void testSelectRecommend(){
-        List<Blog> blogList = blogMapper.selectRecommendLimit6();
+        List<Blog> blogList = blogMapper.selectRecommendLimit4();
         for(Blog e:blogList){
             System.out.println(e);
         }
@@ -92,7 +92,7 @@ public class BlogApplicationTests {
 
     @Test
     public void testSelectHotest(){
-        List<Blog> blogList = blogMapper.selectHotestLimit6();
+        List<Blog> blogList = blogMapper.selectHotestLimit4();
         for(Blog e:blogList){
             System.out.println(e);
         }

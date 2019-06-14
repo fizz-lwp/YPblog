@@ -8,6 +8,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     // 配置url映射规则
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("default/index");
         registry.addViewController("login.html").setViewName("default/login");
         registry.addViewController("sample.html").setViewName("sample/sample");
         registry.addViewController("edit_blog.html").setViewName("login_only/edit_blog");
@@ -21,6 +22,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/upload/**").addResourceLocations("file:D:\\upload\\");
         registry.addResourceHandler("/img/**").addResourceLocations("file:D:\\Study\\Projects\\blog\\src\\main\\resources\\static\\img\\");
+        registry.addResourceHandler("/upload/head_photo/**").addResourceLocations("file:D:\\upload\\head_photo\\");
     }
 
 }

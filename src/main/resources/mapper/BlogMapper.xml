@@ -23,6 +23,8 @@
         <result property="readCount" column="read_count"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
+        <!-- 有没有更简便的方式？ -->
+        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
     </resultMap>
 
     <select id="selectById" resultType="Blog" parameterType="int">
@@ -37,15 +39,15 @@
         select count(*) from blog where user_id = #{userId};
     </select>
 
-    <select id="selectLatestLimit6" resultMap="blog_index">
+    <select id="selectLatestLimit4" resultMap="blog_index">
         select * from blog order by publish_time desc limit 6;
     </select>
 
-    <select id="selectRecommendLimit6" resultMap="blog_index">
+    <select id="selectRecommendLimit4" resultMap="blog_index">
         select * from blog where recommend = 1 limit 6;
     </select>
 
-    <select id="selectHotestLimit6" resultMap="blog_index">
+    <select id="selectHotestLimit4" resultMap="blog_index">
         select * from blog order by read_count desc limit 6;
     </select>
 

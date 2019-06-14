@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>编写 blog</title>
     <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}"/>
-    <link rel="stylesheet" th:href="@{/css/sample.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bar.css}"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
     <style>
         *{
@@ -90,7 +90,7 @@
 </head>
 <body>
 
-    <div th:replace="sample/sample::bar"></div>
+    <div th:replace="sample/bar::bar"></div>
     <form th:action="@{/commit}" method="post">
         <div id="left">
             <div id="type">
