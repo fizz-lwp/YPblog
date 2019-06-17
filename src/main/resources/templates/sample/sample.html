@@ -55,19 +55,32 @@
                     <a href="#">写文章</a>
                 </li>
                 <li>
-                    <a href="#" th:text="${session.loginUser.name}"></a>
+                    <a th:href="@{/userinfo.html}" th:text="${session.loginUser.name}"></a>
                 </li>
             </ul>
         </div>
     </nav>
-    <!-- userinfo -->
-    <div th:fragment="userinfo" style="width:250px;height:280px;background-color:#FAFAFA;">
-        <img th:src="@{${user.headPhoto}}"/>
-        <h3 th:text="${user.blogList.size()}" style="float:left;"></h3>
-        <h3 th:text="${user.commentList.size()}" style="float:right;"></h3>
-        <p style="clear:both;float:left;">发布</p>
-        <p style="float:right;">评论</p>
-        <button type="button" class="btn btn-default"style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
+    <!-- userinfo.html_sidebar -->
+    <div th:fragment="userinfo_sidebar" style="width:250px;height:550px;">
+        <div style="width:250px;height:280px;background-color:#FAFAFA;">
+            <div style="padding-left:33%;padding-top:5%;"><img th:src="@{${user.headPhoto}}" style="width:45%;height:45%;"/></div>
+            <hr/>
+            <h3 th:text="${user.blogList.size()}" style="float:left;color:dodgerblue;margin-left:24%;"></h3>
+            <h3 th:text="${user.commentList.size()}" style="float:right;color:dodgerblue;margin-right:24%;"></h3>
+            <p style="clear:both;float:left;margin-left:22%;">发布</p>
+            <p style="float:right;margin-right:22%;">评论</p>
+            <button type="button" class="btn btn-default"style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
+        </div>
+        <div style="width:250px;height:280px;background-color:#FAFAFA;">
+            <a href="#">发表的文章</a>
+            <hr/>
+            <a href="#">发表的评论</a>
+            <hr/>
+            <a href="#">收藏的文章</a>
+            <hr/>
+            <a href="#">通知</a>
+            <hr/>
+        </div>
     </div>
 
 </body>
