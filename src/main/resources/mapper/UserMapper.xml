@@ -19,17 +19,24 @@
     <resultMap id="user_simple" type="User">
         <id column="id" property="id"/>
         <result column="name" property="name"/>
+        <result column="head_photo" property="headPhoto"/>
+    </resultMap>
+
+    <resultMap id="user_session" type="User">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="head_photo" property="headPhoto"/>
     </resultMap>
 
     <select id="selectFullById" parameterType="int" resultMap="user">
         select * from user where id = #{id};
     </select>
 
-    <select id="selectUser" resultMap="user_simple" parameterType="User">
+    <select id="selectUser" resultMap="user_session" parameterType="User">
         select * from user where name = #{param1} and password = #{param2}
     </select>
 
-    <select id="selectById" parameterType="int" resultMap="user">
+    <select id="selectById" parameterType="int" resultMap="user_simple">
         select * from user where id = #{id};
     </select>
 

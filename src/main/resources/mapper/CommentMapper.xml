@@ -10,11 +10,15 @@
         <collection property="replyList" column="id" select="com.blog.mapper.ReplyMapper.selectByCommentId"/>
     </resultMap>
 
+    <resultMap id="comment_size" type="Comment">
+        <id property="id" column="id"/>
+    </resultMap>
+
     <select id="selectByUserId" resultMap="comment">
       select * from comment where user_id = #{userId};
     </select>
 
-    <select id="selectByBlogId" resultMap="comment">
+    <select id="selectByBlogId" resultMap="comment_size">
       select * from comment where blog_id = #{blogId};
     </select>
 

@@ -25,7 +25,6 @@
         <result property="readCount" column="read_count"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
-        <!-- 有没有更简便的方式？ -->
         <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByBlogId"/>
     </resultMap>
 
