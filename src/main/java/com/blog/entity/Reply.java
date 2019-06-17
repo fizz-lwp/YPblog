@@ -11,28 +11,15 @@ public class Reply {
     private Comment comment;
 
     @Override
-    public String toString(){
-        String result = "[" + this.getId() + "," + this.getContent() + "," + this.getPublishTime() + ",";
-        if(this.getSender() != null){
-            result += this.getSender().getName() + ",";
-        }
-        else{
-            result += "null,";
-        }
-        if(this.getReceiver() != null){
-            result += this.getReceiver().getName();
-        }
-        else{
-            result += "null,";
-        }
-        if(this.getComment() != null){
-            result += this.getComment().getId();
-        }
-        else{
-            result += "null";
-        }
-        result += "]";
-        return result;
+    public String toString() {
+        return "Reply{" +
+                "id=" + id +
+                ", sender=" + sender +
+                ", receiver=" + receiver +
+                ", content='" + content + '\'' +
+                ", publishTime=" + publishTime +
+                ", comment=" + comment +
+                '}';
     }
 
     public Comment getComment() {

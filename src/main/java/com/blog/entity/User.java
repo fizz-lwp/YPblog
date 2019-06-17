@@ -15,6 +15,7 @@ public class User {
     private Role role;
     private List<Blog> blogList = new ArrayList<>();
     private List<Comment> commentList = new ArrayList<>();
+    private List<Reply> replyList = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -30,9 +31,16 @@ public class User {
                 ", role=" + role +
                 ", blogList=" + blogList +
                 ", commentList=" + commentList +
+                ", replyList=" + replyList +
                 '}';
     }
 
+    public List<Reply> getReplyList() {
+        return replyList;
+    }
+    public void setReplyList(List<Reply> replyList) {
+        this.replyList = replyList;
+    }
     public List<Comment> getCommentList() {
         return commentList;
     }

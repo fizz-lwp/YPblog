@@ -26,7 +26,7 @@
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
         <!-- 有没有更简便的方式？ -->
-        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
+        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByBlogId"/>
     </resultMap>
 
     <resultMap id="blog_userinfo" type="Blog">
@@ -52,10 +52,6 @@
     </select>
 
     <select id="selectByIdFull" parameterType="int" resultMap="blog">
-        select * from blog where id = #{id};
-    </select>
-
-    <select id="selectTest" parameterType="int" resultMap="blog_test">
         select * from blog where id = #{id};
     </select>
 

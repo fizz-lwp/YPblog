@@ -13,7 +13,7 @@
         <result column="head_photo" property="headPhoto"/>
         <association property="role" column="role_id" select="com.blog.mapper.RoleMapper.select"/>
         <collection property="blogList" column="id" select="com.blog.mapper.BlogMapper.selectByUserId"/>
-        <collection property="commentList" column="id" select="com.blog.mapper.UserMapper.selectByUserId"/>
+        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
     </resultMap>
 
     <resultMap id="user_simple" type="User">
@@ -25,7 +25,7 @@
         select * from user where id = #{id};
     </select>
 
-    <select id="selectUser" resultMap="user" parameterType="User">
+    <select id="selectUser" resultMap="user_simple" parameterType="User">
         select * from user where name = #{param1} and password = #{param2}
     </select>
 

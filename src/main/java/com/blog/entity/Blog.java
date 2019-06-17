@@ -6,9 +6,6 @@ import java.util.List;
 public class Blog {
 
     private Integer id;
-    private Type type;
-    private User user;
-    private List<Comment> commentList = new ArrayList<>();
     private String title;
     private String summary;
     private Timestamp publishTime;
@@ -18,15 +15,16 @@ public class Blog {
     private String content;
     private String text;
     private Timestamp lastModifyTime;
+    private Type type;
+    private User user;
+    private List<Comment> commentList = new ArrayList<>();
 
     @Override
     public String toString() {
         return "Blog{" +
                 "id=" + id +
-                ", type=" + type +
-                ", user=" + user +
-                ", commentList=" + commentList +
                 ", title='" + title + '\'' +
+                ", summary='" + summary + '\'' +
                 ", publishTime=" + publishTime +
                 ", recommend=" + recommend +
                 ", readCount=" + readCount +
@@ -34,6 +32,9 @@ public class Blog {
                 ", content='" + content + '\'' +
                 ", text='" + text + '\'' +
                 ", lastModifyTime=" + lastModifyTime +
+                ", type=" + type +
+                ", user=" + user +
+                ", commentList=" + commentList +
                 '}';
     }
 

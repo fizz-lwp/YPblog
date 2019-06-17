@@ -1,15 +1,28 @@
 package com.blog.entity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Role {
 
     private Integer id;
     private String name;
+    private List<User> userList = new ArrayList<>();
 
     @Override
-    public String toString(){
-        return "[" + this.getId() + "," + this.getName() + "]";
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", userList=" + userList +
+                '}';
     }
 
+    public List<User> getUserList() {
+        return userList;
+    }
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
     public Integer getId() {
         return id;
     }
