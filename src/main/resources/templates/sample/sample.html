@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>模板</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <!-- bar -->
+    <nav class="navbar navbar-default" role="navigation" th:fragment="bar">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li th:each="type:${session.typeList}" class="active">
+                    <a href="#" th:text="${type.name}"></a>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder=" 搜索"/>
+                </div> <button class="btn btn-default" type="submit">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a th:href="@{/reg.html}">注册</a>
+                </li>
+                <li>
+                    <a th:href="@{/login.html}">登录</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- bar_login -->
+    <nav class="navbar navbar-default" role="navigation" th:fragment="bar_login">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li th:each="type:${session.typeList}" class="active">
+                    <a href="#" th:text="${type.name}"></a>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder=" 搜索"/>
+                </div> <button class="btn btn-default" type="submit">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">写文章</a>
+                </li>
+                <li>
+                    <a href="#" th:text="${session.loginUser.name}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- userinfo -->
+    <div th:fragment="userinfo" style="width:250px;height:280px;background-color:#FAFAFA;">
+        <img th:src="@{${user.headPhoto}}"/>
+        <h3 th:text="${user.blogList.size()}" style="float:left;"></h3>
+        <h3 th:text="${user.commentList.size()}" style="float:right;"></h3>
+        <p style="clear:both;float:left;">发布</p>
+        <p style="float:right;">评论</p>
+        <button type="button" class="btn btn-default"style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
+    </div>
+
+</body>
+</html>

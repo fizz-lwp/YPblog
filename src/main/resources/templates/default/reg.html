@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>注册界面</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-
+    <div class="container">
+        <!-- bar -->
+        <div th:replace="sample/sample::bar"></div>
+        <!-- 登录表单 -->
+        <h3 style="text-align: center">注册</h3>
+        <form class="form-horizontal" role="form" th:action="@{/reg}">
+            <div class="form-group">
+                <input type="text" name="name" class="form-control" style="width:270px;margin-left:39%;" placeholder="用户名"/>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" style="width:270px;margin-left:39%;" placeholder="密码"/>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10" style="margin-left:45%;">
+                <button type="submit" class="btn btn-default" style="width:90px;margin-left:0;">注册</button>
+            </div>
+        </form>
+    </div>
 
 </body>
 </html>

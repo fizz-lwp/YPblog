@@ -8,7 +8,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     // 配置url映射规则
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("default/index");
+        registry.addViewController("/reg.html").setViewName("default/reg");
         registry.addViewController("login.html").setViewName("default/login");
         registry.addViewController("sample.html").setViewName("sample/sample");
         registry.addViewController("edit_blog.html").setViewName("login_only/edit_blog");

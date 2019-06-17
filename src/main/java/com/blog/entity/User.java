@@ -1,4 +1,6 @@
 package com.blog.entity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -9,13 +11,46 @@ public class User {
     private Integer age;
     private String email;
     private String signature;
+    private String headPhoto;
     private Role role;
+    private List<Blog> blogList = new ArrayList<>();
+    private List<Comment> commentList = new ArrayList<>();
 
     @Override
-    public String toString(){
-        return "[" + this.getId() + "," + this.getName() + "," + this.getPassword() + "," + this.getSex() + "," + this.getAge() + "," + this.getEmail() + "," + this.getSignature() + "]";
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", email='" + email + '\'' +
+                ", signature='" + signature + '\'' +
+                ", headPhoto='" + headPhoto + '\'' +
+                ", role=" + role +
+                ", blogList=" + blogList +
+                ", commentList=" + commentList +
+                '}';
     }
 
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
+    }
+    public List<Blog> getBlogList() {
+        return blogList;
+    }
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+    public String getHeadPhoto() {
+        return headPhoto;
+    }
+    public void setHeadPhoto(String headPhoto) {
+        this.headPhoto = headPhoto;
+    }
     public Sex getSex() {
         return sex;
     }

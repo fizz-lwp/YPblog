@@ -10,6 +10,7 @@ public class Blog {
     private User user;
     private List<Comment> commentList = new ArrayList<>();
     private String title;
+    private String summary;
     private Timestamp publishTime;
     private Integer recommend;
     private Integer readCount;
@@ -36,6 +37,12 @@ public class Blog {
                 '}';
     }
 
+    public String getSummary() {
+        return summary;
+    }
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
     public String getText() {
         return text;
     }

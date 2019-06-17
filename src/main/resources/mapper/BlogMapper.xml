@@ -12,6 +12,7 @@
         <result property="recommend" column="recommend"/>
         <result property="readCount" column="read_count"/>
         <result property="collectCount" column="collect_count"/>
+        <result property="summary" column="summary"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
         <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
@@ -20,6 +21,7 @@
     <resultMap id="blog_index" type="Blog">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
+        <result property="summary" column="summary"/>
         <result property="readCount" column="read_count"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
@@ -27,7 +29,25 @@
         <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
     </resultMap>
 
-    <select id="selectById" resultType="Blog" parameterType="int">
+    <resultMap id="blog_userinfo" type="Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="readCount" column="read_count"/>
+        <result property="collectCount" column="collect_count"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="lastModifyTime" column="last_modify_time"/>
+        <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
+    </resultMap>
+
+    <resultMap id="blog_simple" type="Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="publishTime" column="publish_time"/>
+        <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
+        <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectSimpleById"/>
+    </resultMap>
+
+    <select id="selectById" resultMap="blog_simple" parameterType="int">
         select * from blog where id = #{id};
     </select>
 
@@ -35,20 +55,28 @@
         select * from blog where id = #{id};
     </select>
 
+    <select id="selectTest" parameterType="int" resultMap="blog_test">
+        select * from blog where id = #{id};
+    </select>
+
     <select id="selectCountByUserId" parameterType="int" resultType="_integer">
         select count(*) from blog where user_id = #{userId};
     </select>
 
-    <select id="selectLatestLimit4" resultMap="blog_index">
-        select * from blog order by publish_time desc limit 6;
+    <select id="selectLatestLimit" resultMap="blog_index">
+        select * from blog order by publish_time desc limit 2;
     </select>
 
-    <select id="selectRecommendLimit4" resultMap="blog_index">
-        select * from blog where recommend = 1 limit 6;
+    <select id="selectRecommendLimit" resultMap="blog_index">
+        select * from blog where recommend = 1 limit 2;
     </select>
 
-    <select id="selectHotestLimit4" resultMap="blog_index">
-        select * from blog order by read_count desc limit 6;
+    <select id="selectHotestLimit" resultMap="blog_index">
+        select * from blog order by read_count desc limit 2;
+    </select>
+
+    <select id="selectByUserId" resultMap="blog_userinfo">
+        select * from blog where user_id = #{user_id};
     </select>
 
     <insert id="insert" parameterType="Blog">

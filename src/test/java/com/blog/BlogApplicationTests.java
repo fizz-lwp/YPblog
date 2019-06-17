@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -75,27 +76,13 @@ public class BlogApplicationTests {
     }
 
     @Test
-    public void testSelectLatest(){
-        List<Blog> blogList = blogMapper.selectLatestLimit4();
-        for(Blog e:blogList){
-            System.out.println(e);
+    public void test1(){
+        long start = System.currentTimeMillis();
+        for(int i = 0;i < 100;i++){
+            blogMapper.selectByIdFull(1);
         }
-    }
-
-    @Test
-    public void testSelectRecommend(){
-        List<Blog> blogList = blogMapper.selectRecommendLimit4();
-        for(Blog e:blogList){
-            System.out.println(e);
-        }
-    }
-
-    @Test
-    public void testSelectHotest(){
-        List<Blog> blogList = blogMapper.selectHotestLimit4();
-        for(Blog e:blogList){
-            System.out.println(e);
-        }
+        long stop = System.currentTimeMillis();
+        System.out.println(stop-start);
     }
 
 }

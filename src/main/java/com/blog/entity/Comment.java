@@ -9,6 +9,7 @@ public class Comment {
     private User user;
     private String content;
     private Timestamp publishTime;
+    private Blog blog;
     private List<Reply> replyList = new ArrayList<>();
 
     @Override
@@ -18,10 +19,17 @@ public class Comment {
                 ", user=" + user +
                 ", content='" + content + '\'' +
                 ", publishTime=" + publishTime +
+                ", blog=" + blog +
                 ", replyList=" + replyList +
                 '}';
     }
 
+    public Blog getBlog() {
+        return blog;
+    }
+    public void setBlog(Blog blog) {
+        this.blog = blog;
+    }
     public Integer getId() {
         return id;
     }

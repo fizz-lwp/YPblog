@@ -5,176 +5,96 @@
     <title>首页</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script></head>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        img{
+            width:30px;
+            height:30px;
+            margin-right:12px;
+        }
+        span{
+            float:left;
+            margin-top:8px;
+            margin-right:5px;
+        }
+        .first_p{
+            clear:both;
+        }
+        .count{
+            float:right;
+            color:#AAAAAA;
+        }
+    </style>
+</head>
 <body>
 
-<div class="container">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <nav class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+    <!-- container -->
+    <div class="container">
+        <!-- bar && bar_login -->
+        <div th:if="not ${session.loginUser}">
+            <div th:replace="sample/sample::bar"></div>
+        </div>
+        <div th:if="${session.loginUser}">
+            <div th:replace="sample/sample::bar_login"></div>
+        </div>
+        <!-- introduce -->
+        <div class="jumbotron" style="height:210px;padding-top:10px;margin-bottom:0px;">
+            <h3>
+                个人博客
+            </h3>
+            <p>
+                这里是基于兴趣使然的个人博客开发小网站，什么功能都还没有，前端也莫得，后端也莫得，并发控制也莫得，安全控制也莫得。
+            </p>
+            <p>
+                <a class="btn btn-primary btn-large" href="#">了解更多</a>
+            </p>
+        </div>
+        <!-- blog -->
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h3>最新更新</h3>
                 </div>
-
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#">Link</a>
-                        </li>
-                        <li>
-                            <a href="#">Link</a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">Action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Something else here</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Separated link</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">One more separated link</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input class="form-control" type="text" />
-                        </div> <button class="btn btn-default" type="submit">Submit</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">Link</a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">Action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Something else here</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Separated link</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div th:each="latestBlog:${latestBlogs}" class="col-md-6 column">
+                    <img th:src="@{${latestBlog.user.headPhoto}}" style="float:left"/>
+                    <span class="label label-default" th:text="${latestBlog.type.name}"></span>
+                    <h4 th:text="${latestBlog.title}" style="float:left"></h4>
+                    <p class="count" th:text="${latestBlog.commentList.size()}+' 评论'"></p>
+                    <p class="count" th:text="${latestBlog.readCount}+' 浏览 ·'"></p>
+                    <p class="first_p" th:text="${latestBlog.summary}"></p>
+                    <p><a class="btn" href="#">阅读博客</a></p>
                 </div>
-
-            </nav>
-            <div class="carousel slide" id="carousel-30705">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-30705" data-slide-to="0">
-                    </li>
-                    <li data-target="#carousel-30705" data-slide-to="1">
-                    </li>
-                    <li data-target="#carousel-30705" data-slide-to="2">
-                    </li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item next left">
-                        <img alt="" src="v3/default.jpg" />
-                        <div class="carousel-caption">
-                            <h4>
-                                First Thumbnail label
-                            </h4>
-                            <p>
-                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img alt="" src="v3/default1.jpg" />
-                        <div class="carousel-caption">
-                            <h4>
-                                Second Thumbnail label
-                            </h4>
-                            <p>
-                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="item active left">
-                        <img alt="" src="v3/default2.jpg" />
-                        <div class="carousel-caption">
-                            <h4>
-                                Third Thumbnail label
-                            </h4>
-                            <p>
-                                Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                            </p>
-                        </div>
-                    </div>
-                </div> <a class="left carousel-control" href="#carousel-30705" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-30705" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-            <div class="jumbotron">
-                <h1>
-                    Hello, world!
-                </h1>
-                <p>
-                    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
-                </p>
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h3>最热博客</h3>
+                </div>
+                <div th:each="hotestBlog:${hotestBlogs}" class="col-md-6 column">
+                    <img th:src="@{${hotestBlog.user.headPhoto}}" style="float:left"/>
+                    <span class="label label-default" th:text="${hotestBlog.type.name}"></span>
+                    <h4 th:text="${hotestBlog.title}" style="float:left"></h4>
+                    <p class="count" th:text="${hotestBlog.commentList.size()}+' 评论'"></p>
+                    <p class="count" th:text="${hotestBlog.readCount}+' 浏览 ·'"></p>
+                    <p class="first_p" th:text="${hotestBlog.summary}"></p>
+                    <p><a class="btn" href="#">阅读博客</a></p>
+                </div>
+            </div>
+            <div class="col-md-12 column">
+                <div class="page-header">
+                    <h3>最近推荐</h3>
+                </div>
+                <div th:each="recommendBlog:${recommendBlogs}" class="col-md-6 column">
+                    <img th:src="@{${recommendBlog.user.headPhoto}}" style="float:left"/>
+                    <span class="label label-default" th:text="${recommendBlog.type.name}"></span>
+                    <h4 th:text="${recommendBlog.title}" style="float:left"></h4>
+                    <p class="count" th:text="${recommendBlog.commentList.size()}+' 评论'"></p>
+                    <p class="count" th:text="${recommendBlog.readCount}+' 浏览 ·'"></p>
+                    <p class="first_p" th:text="${recommendBlog.summary}"></p>
+                    <p><a class="btn" href="#">阅读博客</a></p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row clearfix">
-        <div class="col-md-4 column">
-            <h2>
-                Heading
-            </h2>
-            <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            </p>
-            <p>
-                <a class="btn" href="#">View details »</a>
-            </p>
-        </div>
-        <div class="col-md-4 column">
-            <h2>
-                Heading
-            </h2>
-            <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            </p>
-            <p>
-                <a class="btn" href="#">View details »</a>
-            </p>
-        </div>
-        <div class="col-md-4 column">
-            <h2>
-                Heading
-            </h2>
-            <p>
-                Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-            </p>
-            <p>
-                <a class="btn" href="#">View details »</a>
-            </p>
-        </div>
-    </div>
-</div>
 
 </body>
 </html>
