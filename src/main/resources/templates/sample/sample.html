@@ -61,7 +61,7 @@
         </div>
     </nav>
     <!-- userinfo.html_sidebar -->
-    <div th:fragment="userinfo_sidebar" style="width:250px;height:550px;">
+    <div th:fragment="userinfo_sidebar" style="width:250px;height:550px;float:left;">
         <div style="width:250px;height:280px;background-color:#FAFAFA;">
             <div style="padding-left:33%;padding-top:5%;"><img th:src="@{${user.headPhoto}}" style="width:45%;height:45%;"/></div>
             <hr/>
@@ -71,16 +71,27 @@
             <p style="float:right;margin-right:22%;">评论</p>
             <button type="button" class="btn btn-default"style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
         </div>
-        <div style="width:250px;height:280px;background-color:#FAFAFA;">
-            <a href="#">发表的文章</a>
+        <div style="width:250px;height:280px;background-color:#FAFAFA;margin-top:20px;padding-top:20px;">
+            <div style="margin-left:40px;">
+                <img th:src="@{/img/post_logo.png}"/><a href="#" style="margin-left:25px;">发表的文章</a>
+            </div>
             <hr/>
-            <a href="#">发表的评论</a>
+            <div style="margin-left:40px;">
+                <img th:src="@{/img/comment_logo.png}"/><a href="#" style="margin-left:25px;">发表的评论</a>
+            </div>
             <hr/>
-            <a href="#">收藏的文章</a>
+            <div style="margin-left:40px;">
+                <img th:src="@{/img/collect_logo.png}"/><a href="#" style="margin-left:25px;">收藏的文章</a>
+            </div>
             <hr/>
-            <a href="#">通知</a>
+            <div style="margin-left:40px;">
+                <img th:src="@{/img/notice_logo.png}"/><a href="#" style="margin-left:25px;">通知</a>
+            </div>
             <hr/>
         </div>
+    </div>
+    <!-- userinfo.html_list -->
+    <div th:fragment="userinfo_list" style="float:right;width:870px;height:580px;background-color:#FAFAFA;">
     </div>
 
 </body>
