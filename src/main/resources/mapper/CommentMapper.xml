@@ -6,7 +6,7 @@
         <id property="id" column="id"/>
         <result property="content" column="content"/>
         <result property="publishTime" column="publish_time"/>
-        <association property="blog" column="blog_id" select="com.blog.mapper.ReplyMapper.selectById"/>
+        <association property="blog" column="blog_id" select="com.blog.mapper.BlogMapper.selectById"/>
         <collection property="replyList" column="id" select="com.blog.mapper.ReplyMapper.selectByCommentId"/>
     </resultMap>
 

@@ -11,13 +11,13 @@ public class Blog {
     private Timestamp publishTime;
     private Integer recommend;
     private Integer readCount;
-    private Integer collectCount;
     private String content;
     private String text;
     private Timestamp lastModifyTime;
     private Type type;
     private User user;
     private List<Comment> commentList = new ArrayList<>();
+    private List<Collect> collectList = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -28,16 +28,22 @@ public class Blog {
                 ", publishTime=" + publishTime +
                 ", recommend=" + recommend +
                 ", readCount=" + readCount +
-                ", collectCount=" + collectCount +
                 ", content='" + content + '\'' +
                 ", text='" + text + '\'' +
                 ", lastModifyTime=" + lastModifyTime +
                 ", type=" + type +
                 ", user=" + user +
                 ", commentList=" + commentList +
+                ", collectList=" + collectList +
                 '}';
     }
 
+    public List<Collect> getCollectList() {
+        return collectList;
+    }
+    public void setCollectList(List<Collect> collectList) {
+        this.collectList = collectList;
+    }
     public String getSummary() {
         return summary;
     }
@@ -91,12 +97,6 @@ public class Blog {
     }
     public void setReadCount(Integer readCount) {
         this.readCount = readCount;
-    }
-    public Integer getCollectCount() {
-        return collectCount;
-    }
-    public void setCollectCount(Integer collectCount) {
-        this.collectCount = collectCount;
     }
     public List<Comment> getCommentList() {
         return commentList;

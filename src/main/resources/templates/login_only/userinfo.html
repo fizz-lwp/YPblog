@@ -12,7 +12,87 @@
     <div class="container">
         <div th:replace="sample/sample::bar_login"></div>
         <div th:replace="sample/sample::userinfo_sidebar"></div>
-        <div th:replace="sample/sample::userinfo_list"></div>
+        <div th:switch="${switch}">
+            <!-- 发表的文章 -->
+            <div th:case="'blog'" style="float:right;width:870px;height:580px;background-color:#FAFAFA;">
+                <h4 style="margin-left:10px;margin-bottom:0;">发表的文章</h4>
+                <hr style="margin-top:8px;"/>
+                <div>
+                    <div class="list-group" style="width:95%;margin-left:2%;">
+                        <div th:each="blog:${blogList.list}" class="list-group-item">
+                            <span class="label label-default" th:text="${blog.type.name}"></span>
+                            <a th:text="${blog.title}" th:href="@{#}" style="text-decoration:none;color:black;"></a>
+                            <p th:text="${blog.publishTime}+' 发布时间·'" style="float:right;color:#aaaaaa;"></p>
+                            <p th:text="${blog.LastModifyTime}+' 最后修改·'" style="float:right;color:#aaaaaa;"></p>
+                            <p th:text="${blog.readCount}+' 浏览·'" style="float:right;color:#aaaaaa;"></p>
+                        </div>
+                    </div>
+                    <ul style="margin-left:2%;" class="pagination">
+                        <li>
+                            <a href="#">上一页</a>
+                        </li>
+                        <li th:each="index:${#numbers.sequence(1,blogList.pages)}">
+                            <a th:href="@{/page(index=${index})}" th:text="${index}"></a>
+                        </li>
+                        <li>
+                            <a href="#">下一页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 发表的评论 -->
+            <div th:case="'comment'" style="float:right;width:870px;height:580px;background-color:#FAFAFA;">
+                <h4 style="margin-left:10px;margin-bottom:0;">发表的评论</h4>
+                <hr style="margin-top:8px;"/>
+                <div>
+                    <div class="list-group" style="width:95%;margin-left:2%;">
+                        <div th:each="comment:${commentList.list}" class="list-group-item">
+                            <p th:text="'内容 : '+${comment.content}" style="float:left;color:#aaaaaa;"></p>
+                            <span th:text="${comment.blog.type.name}" class="label label-default" style="float:right;"></span>
+                            <a th:text="${comment.blog.title}" th:href="@{#}" style="float:right;text-decoration:none;color:black;"></a>
+                            <p th:text="${comment.publishTime}+' 发布时间·'" style="float:right;color:#aaaaaa;"></p>
+                        </div>
+                    </div>
+                    <ul style="margin-left:2%;" class="pagination">
+                        <li>
+                            <a href="#">上一页</a>
+                        </li>
+                        <li th:each="index:${#numbers.sequence(1,commentList.pages)}">
+                            <a th:href="@{/page(index=${index})}" th:text="${index}"></a>
+                        </li>
+                        <li>
+                            <a href="#">下一页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 收藏的文章 -->
+            <div th:case="'collect'" style="float:right;width:870px;height:580px;background-color:#FAFAFA;">
+                <h4 style="margin-left:10px;margin-bottom:0;">发表的评论</h4>
+                <hr style="margin-top:8px;"/>
+                <div>
+                    <div class="list-group" style="width:95%;margin-left:2%;">
+                        <div th:each="collect:${collectList.list}" class="list-group-item">
+                            <span class="label label-default" th:text="${collect.type.name}"></span>
+                            <a th:text="${collect.title}" th:href="@{#}" style="text-decoration:none;color:black;"></a>
+                            <p th:text="${collect.publishTime}+' 发布时间·'" style="float:right;color:#aaaaaa;"></p>
+                            <p th:text="${collect.user.name}+' 作者·'" style="float:right;color:#aaaaaa;"></p>
+                        </div>
+                    </div>
+                    <ul style="margin-left:2%;" class="pagination">
+                        <li>
+                            <a href="#">上一页</a>
+                        </li>
+                        <li th:each="index:${#numbers.sequence(1,collectList.pages)}">
+                            <a th:href="@{/page(index=${index})}" th:text="${index}"></a>
+                        </li>
+                        <li>
+                            <a href="#">下一页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>

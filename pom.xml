@@ -79,6 +79,12 @@
             <artifactId>bootstrap</artifactId>
             <version>4.3.1</version>
         </dependency>
+        <!-- 分页插件依赖 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>5.1.4</version>
+        </dependency>
         <!-- test 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

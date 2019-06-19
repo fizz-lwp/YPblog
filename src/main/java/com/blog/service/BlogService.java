@@ -1,5 +1,6 @@
 package com.blog.service;
 import com.blog.entity.Blog;
+import com.blog.entity.Collect;
 
 import java.util.List;
 
@@ -10,5 +11,6 @@ public interface BlogService {
     List<Blog> getReadestBlogs(); // 获取最热博客集
     List<Blog> getRecommendBlogs(); // 获取推荐博客集
     Blog getBlogById(Integer id); // 获取指定博客
+    List<Blog> getListByCollectList(List<Collect> collectList); //
 
 }

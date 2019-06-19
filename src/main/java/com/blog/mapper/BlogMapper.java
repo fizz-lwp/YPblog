@@ -18,6 +18,6 @@ public interface BlogMapper {
     List<Blog> selectLatestLimit(); // 查询部分最新博客集
     List<Blog> selectRecommendLimit(); // 查询部分推荐博客集(能力不足，尚未实现)
     List<Blog> selectHotestLimit(); // 查询部分最热博客集
-    List<Blog> selectByUserId(Integer user_id); // 按字段 user_id 查询博客集
+    List<Blog> selectByUserId(Integer userId); // 按字段 user_id 查询博客集
 
 }
