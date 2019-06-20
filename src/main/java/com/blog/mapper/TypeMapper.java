@@ -8,7 +8,6 @@ import java.util.List;
 @Mapper
 @Component
 public interface TypeMapper {
-
     List<Type> selectAll(); // 查询所有栏目记录集
     Type selectById(Integer id); // 按 ID 查询栏目记录
     Type selectByName(String name); // 按字段 name 查询栏目记录

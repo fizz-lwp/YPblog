@@ -1,5 +1,8 @@
 package com.blog.service;
+import com.blog.entity.Blog;
 import com.blog.entity.User;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -14,5 +17,6 @@ public interface UserService {
     User lockUserById(int userId); // 更新用户的status字段，设为“禁用”
     User unlockUserById(int userId); // 更新用户的status字段，设为“正常”
     int countUser(); // 返回用户总数
+    List<User> getAllUsers(); // 返回所有用户记录集
 
 }

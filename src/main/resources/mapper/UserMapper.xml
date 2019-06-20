@@ -32,6 +32,22 @@
         <result column="status" property="status"/>
     </resultMap>
 
+    <resultMap id="user_admin" type="User">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="email" property="email"/>
+        <result column="signature" property="signature"/>
+        <result column="head_photo" property="headPhoto"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="user_admin">
+        select * from user;
+    </select>
+
     <select id="selectFullById" parameterType="int" resultMap="user_full">
         select * from user where id = #{id}
     </select>
@@ -40,7 +56,7 @@
         select * from user where name = #{param1} and password = #{param2}
     </select>
 
-    <select id="selectById" parameterType="int" resultMap="user_simple">
+    <select id="selectById" parameterType="int" resultMap="user_admin">
         select * from user where id = #{id}
     </select>
 

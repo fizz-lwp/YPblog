@@ -17,5 +17,6 @@ public interface BlogService {
     Blog setRecommend(int blogId); // 设置博客为推荐状态 recommend=1
     Blog setNoRecommend(int blogId); // 设置博客为非推荐状态 recommend=0
     int countBlog(); // 返回博客总数
+    List<Blog> getAllBlogs(); // 返回所有博客记录集
 
 }

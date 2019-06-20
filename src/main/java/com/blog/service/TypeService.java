@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface TypeService {
 
-    List<Type> getAllType();
+    List<Type> getAllTypes(); // 返回所有栏目记录集
     Type addType(String type); // 增加栏目（重名添加失败返回null）
     void deleteType(String name); // 删除栏目（删除栏目后该栏目的文章级联删除）
     Type renameType(String oldType,String newType);	// 给栏目换名字（不允许重名）

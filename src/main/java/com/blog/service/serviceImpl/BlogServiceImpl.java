@@ -66,5 +66,9 @@ public class BlogServiceImpl implements BlogService {
     public int countBlog(){
         return blogMapper.selectCount();
     }
+    @Override
+    public List<Blog> getAllBlogs(){
+        return blogMapper.selectAll();
+    }
 
 }
