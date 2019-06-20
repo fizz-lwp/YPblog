@@ -17,7 +17,7 @@ public class User {
     private List<Blog> blogList = new ArrayList<>();
     private List<Comment> commentList = new ArrayList<>();
     private List<Reply> replyList = new ArrayList<>();
-
+    private List<Collect> collectList = new ArrayList<>();
     @Override
     public String toString() {
         return "User{" +
@@ -34,6 +34,14 @@ public class User {
                 ", commentList=" + commentList +
                 ", replyList=" + replyList +
                 '}';
+    }
+
+    public List<Collect> getCollectList() {
+        return collectList;
+    }
+
+    public void setCollectList(List<Collect> collectList) {
+        this.collectList = collectList;
     }
 
     public String getStatus() {

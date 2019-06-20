@@ -45,7 +45,7 @@
     </resultMap>
 
     <select id="selectAll" resultMap="user_admin">
-        select * from user;
+        select * from user
     </select>
 
     <select id="selectFullById" parameterType="int" resultMap="user_full">

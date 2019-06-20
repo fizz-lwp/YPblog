@@ -21,7 +21,7 @@ public class IndexController {
 
     @RequestMapping("index.html")
     public String index(HttpSession session, Model model){
-        List<Type> typeList = typeService.getAllType();
+        List<Type> typeList = typeService.getAllTypes();
         List<Blog> latestBlogs = blogService.getLatestBlogs();
         List<Blog> hotestBlogs = blogService.getReadestBlogs();
         List<Blog> recommendBlogs = blogService.getRecommendBlogs();

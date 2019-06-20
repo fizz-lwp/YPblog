@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>注册界面</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row clearfix">
+            <div th:replace="admin/admin::_2"></div>
+            <div class="col-md-6 column">
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            栏目名
+                        </th>
+                        <th>
+                            操作
+                        </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="type : ${typeInfo.getList()}">
+                        <td th:text="${type.id}">
+                            1
+                        </td>
+                        <td th:text="${type.name}">
+                            TB - Monthly
+                        </td>
+                        <td>
+                            <form th:action="@{/admin/type/{name}(name=${type.getName()})}" method="post">
+                                <input type="hidden" name="_method" value="DELETE" />
+                                <button type="submit">删除</button>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <center> <ul class="pagination" >
+                    <li th:class="${session.pageNow == 1}?'disabled':''">
+                        <a href="#" th:href="@{/admin/type/page(index=${session.pageNow}-1)}">Prev</a>
+                    </li>
+                    <li th:each="i :${#numbers.sequence(1,typeInfo.getPages())}"  th:class="${session.pageNow == i}?'active disable':''" >
+                        <a href="#"  th:href="@{/admin/type/page(index=${i})}" th:text="${i}"> 1</a>
+                    </li>
+
+                    <li th:class="${session.pageNow == session.pageNum}?'disabled':''">
+                        <a href="#" th:href="@{/admin/type/page(index=${session.pageNow}+1)}" >Next</a>
+                    </li>
+                </ul></center>
+                <h3>
+                    请在下面添加栏目
+                </h3>
+                <form class="form-horizontal" role="form" th:action="@{/admin/type}" method="post">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="inputPassword3">栏目名：</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="inputPassword3" name="name" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button class="btn btn-default" type="submit">添加栏目</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div th:replace="admin/admin::_4"></div>
+        </div>
+    </div>
+
+</body>
+</html>

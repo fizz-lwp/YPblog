@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-2 column" th:fragment="_2" >
+            <ul class="nav nav-stacked nav-pills">
+                <li>
+                    <a href="#" th:href="@{/admin/index}">管理员首页</a>
+                </li>
+                <li>
+                    <a href="#" th:href="@{/admin/user}">用户管理</a>
+                </li>
+                <li>
+                    <a href="#" th:href="@{/admin/blog}">博客管理</a>
+                </li>
+                <li>
+                    <a href="#" th:href="@{/admin/type}">栏目管理</a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-6 column" th:fragment="_6">
+
+            <div class="list-group">
+                <a class="list-group-item" th:href="@{/admin/user}"> <span class="badge" th:text="${simpleResult.userNum}">14</span> 当前用户数量</a>
+                <a class="list-group-item" th:href="@{/admin/blog}"> <span class="badge" th:text="${simpleResult.blogNum}">14</span> 当前博客数量</a>
+                <a class="list-group-item" th:href="@{/admin/type}"> <span class="badge" th:text="${simpleResult.typeNum}">14</span> 当前栏目数量</a>
+            </div>
+        </div>
+        <div class="col-md-4 column" th:fragment="_4">
+            <blockquote>
+                <p>
+                    对不起，我不会写前端。
+                </p> <small>尼古拉斯 <cite>熊</cite></small>
+            </blockquote>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

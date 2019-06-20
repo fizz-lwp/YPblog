@@ -58,7 +58,7 @@
     </resultMap>
 
     <select id="selectAll" resultMap="blog_admin">
-        select * from blog;
+        select * from blog
     </select>
 
     <select id="selectById" resultMap="blog_simple" parameterType="int">
