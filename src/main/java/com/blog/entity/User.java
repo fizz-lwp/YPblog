@@ -12,6 +12,7 @@ public class User {
     private String email;
     private String signature;
     private String headPhoto;
+    private String status;
     private Role role;
     private List<Blog> blogList = new ArrayList<>();
     private List<Comment> commentList = new ArrayList<>();
@@ -29,6 +30,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", signature='" + signature + '\'' +
                 ", headPhoto='" + headPhoto + '\'' +
+                ", status='" + status + '\'' +
                 ", role=" + role +
                 ", blogList=" + blogList +
                 ", commentList=" + commentList +
@@ -37,6 +39,12 @@ public class User {
                 '}';
     }
 
+    public String getStatus() {
+        return status;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
     public List<Collect> getCollectList() {
         return collectList;
     }

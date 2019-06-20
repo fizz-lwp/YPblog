@@ -12,5 +12,10 @@ public interface BlogService {
     List<Blog> getRecommendBlogs(); // 获取推荐博客集
     Blog getBlogById(Integer id); // 获取指定博客
     List<Blog> getListByCollectList(List<Collect> collectList); //
+    List<Blog> getBlogsByUserId(Integer userId); //
+    void deleteBlogById(int blogId); // 删除博客
+    Blog setRecommend(int blogId); // 设置博客为推荐状态 recommend=1
+    Blog setNoRecommend(int blogId); // 设置博客为非推荐状态 recommend=0
+    int countBlog(); // 返回博客总数
 
 }

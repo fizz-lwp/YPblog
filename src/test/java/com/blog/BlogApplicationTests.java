@@ -1,8 +1,16 @@
 package com.blog;
 import com.blog.entity.*;
 import com.blog.mapper.BlogMapper;
+import com.blog.mapper.CommentMapper;
 import com.blog.mapper.ReplyMapper;
 import com.blog.mapper.UserMapper;
+import com.blog.service.BlogService;
+import com.blog.service.CommentService;
+import com.blog.service.TypeService;
+import com.blog.service.UserService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +30,16 @@ public class BlogApplicationTests {
     BlogMapper blogMapper;
     @Autowired
     ReplyMapper replyMapper;
+    @Autowired
+    CommentMapper commentMapper;
+    @Autowired
+    UserService userService;
+    @Autowired
+    BlogService blogService;
+    @Autowired
+    TypeService typeService;
+    @Autowired
+    CommentService commentService;
 
     @Test
     public void test() {
@@ -76,8 +94,20 @@ public class BlogApplicationTests {
     }
 
     @Test
-    public void test1(){
-        userMapper.selectFullById(1);
+    public void testCount(){
+        System.out.println(userService.countUser());
+        System.out.println(blogService.countBlog());
+        System.out.println(typeService.countType());
+    }
+
+    @Test
+    public void testType(){
+        PageHelper.startPage(3,1);
+        List<Comment> commentList = commentMapper.selectByBlogId(1);
+        PageInfo<Comment> comments = new PageInfo<>(commentList);
+        for(Comment e:comments.getList()){
+            System.out.println(e);
+        }
     }
 
 }

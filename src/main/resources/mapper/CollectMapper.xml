@@ -8,7 +8,7 @@
     </resultMap>
 
     <select id="selectByUserId" parameterType="int" resultMap="collect_blog">
-        select * from collect where user_id = #{userId};
+        select * from collect where user_id = #{userId}
     </select>
 
 </mapper>

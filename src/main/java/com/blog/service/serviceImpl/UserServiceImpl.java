@@ -29,5 +29,23 @@ public class UserServiceImpl implements UserService {
     public User getUserInfo(Integer id){
         return userMapper.selectFullById(id);
     }
+    @Override
+    public void deleteUserById(int userId){
+        userMapper.delete(userId);
+    }
+    @Override
+    public User lockUserById(int userId){
+        userMapper.updateStatusLock(userId);
+        return userMapper.selectById(userId);
+    }
+    @Override
+    public User unlockUserById(int userId){
+        userMapper.updateStatusUnlock(userId);
+        return userMapper.selectById(userId);
+    }
+    @Override
+    public int countUser(){
+        return userMapper.selectCount();
+    }
 
 }

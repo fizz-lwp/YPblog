@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>模板</title>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -55,7 +55,7 @@
                     <a href="#">写文章</a>
                 </li>
                 <li>
-                    <a th:href="@{/userinfo(param_list='blog')}" th:text="${session.loginUser.name}"></a>
+                    <a th:href="@{/userinfo(param_list='blog',index=1)}" th:text="${session.loginUser.name}"></a>
                 </li>
             </ul>
         </div>
@@ -69,19 +69,19 @@
             <h3 th:text="${user.commentList.size()}" style="float:right;color:dodgerblue;margin-right:24%;"></h3>
             <p style="clear:both;float:left;margin-left:22%;">发布</p>
             <p style="float:right;margin-right:22%;">评论</p>
-            <button type="button" class="btn btn-default"style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
+            <button type="button" class="btn btn-default" style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
         </div>
         <div style="width:250px;height:280px;background-color:#FAFAFA;margin-top:20px;padding-top:20px;">
             <div style="margin-left:40px;">
-                <img th:src="@{/img/post_logo.png}"/><a th:href="@{/userinfo(param_list='blog')}" style="margin-left:25px;text-decoration:none;color:black;">发表的文章</a>
+                <img th:src="@{/img/post_logo.png}"/><a th:href="@{/userinfo(param_list='blog',index=1)}" style="margin-left:25px;text-decoration:none;color:black;">发表的文章</a>
             </div>
             <hr/>
             <div style="margin-left:40px;">
-                <img th:src="@{/img/comment_logo.png}"/><a th:href="@{/userinfo(param_list='comment')}" style="margin-left:25px;text-decoration:none;color:black;">发表的评论</a>
+                <img th:src="@{/img/comment_logo.png}"/><a th:href="@{/userinfo(param_list='comment',index=1)}" style="margin-left:25px;text-decoration:none;color:black;">发表的评论</a>
             </div>
             <hr/>
             <div style="margin-left:40px;">
-                <img th:src="@{/img/collect_logo.png}"/><a th:href="@{/userinfo(param_list='collect')}" style="margin-left:25px;text-decoration:none;color:black;">收藏的文章</a>
+                <img th:src="@{/img/collect_logo.png}"/><a th:href="@{/userinfo(param_list='collect',index=1)}" style="margin-left:25px;text-decoration:none;color:black;">收藏的文章</a>
             </div>
             <hr/>
             <div style="margin-left:40px;">

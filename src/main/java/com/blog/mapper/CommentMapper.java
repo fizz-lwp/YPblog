@@ -1,6 +1,7 @@
 package com.blog.mapper;
 import com.blog.entity.Comment;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

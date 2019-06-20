@@ -8,6 +8,15 @@ public class Type {
     private String name;
     private List<Blog> blogList = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Type{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", blogList=" + blogList +
+                '}';
+    }
+
     public List<Blog> getBlogList() {
         return blogList;
     }

@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="select" parameterType="int" resultMap="role_simple">
-        select * from role where id = #{id};
+        select * from role where id = #{id}
     </select>
 
 </mapper>

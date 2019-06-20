@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>用户个人信息界面</title>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -32,7 +32,7 @@
                             <a href="#">上一页</a>
                         </li>
                         <li th:each="index:${#numbers.sequence(1,blogList.pages)}">
-                            <a th:href="@{/page(index=${index})}" th:text="${index}"></a>
+                            <a th:href="@{/userinfo(param_list='blog',index=${index})}" th:text="${index}"></a>
                         </li>
                         <li>
                             <a href="#">下一页</a>
@@ -46,11 +46,12 @@
                 <hr style="margin-top:8px;"/>
                 <div>
                     <div class="list-group" style="width:95%;margin-left:2%;">
-                        <div th:each="comment:${commentList.list}" class="list-group-item">
-                            <p th:text="'内容 : '+${comment.content}" style="float:left;color:#aaaaaa;"></p>
-                            <span th:text="${comment.blog.type.name}" class="label label-default" style="float:right;"></span>
-                            <a th:text="${comment.blog.title}" th:href="@{#}" style="float:right;text-decoration:none;color:black;"></a>
-                            <p th:text="${comment.publishTime}+' 发布时间·'" style="float:right;color:#aaaaaa;"></p>
+                        <div th:each="comment:${commentList.list}" class="list-group-item" style="height:90px;">
+                            <p style="float:left;color:#aaaaaa;">博客:&nbsp;</p>
+                            <span th:text="${comment.blog.type.name}" class="label label-default"></span>
+                            <a th:text="${comment.blog.title}" th:href="@{#}" style="text-decoration:none;color:black;"></a>
+                            <p th:text="'发布时间 '+${comment.publishTime}" style="float:right;color:#aaaaaa;"></p>
+                            <p th:text="'内容 : '+${comment.content}" style="clear:both;color:#aaaaaa;"></p>
                         </div>
                     </div>
                     <ul style="margin-left:2%;" class="pagination">
@@ -58,7 +59,7 @@
                             <a href="#">上一页</a>
                         </li>
                         <li th:each="index:${#numbers.sequence(1,commentList.pages)}">
-                            <a th:href="@{/page(index=${index})}" th:text="${index}"></a>
+                            <a th:href="@{/userinfo(param_list='comment',index=${index})}" th:text="${index}"></a>
                         </li>
                         <li>
                             <a href="#">下一页</a>
@@ -84,7 +85,7 @@
                             <a href="#">上一页</a>
                         </li>
                         <li th:each="index:${#numbers.sequence(1,collectList.pages)}">
-                            <a th:href="@{/page(index=${index})}" th:text="${index}"></a>
+                            <a th:href="@{/userinfo(param_list='collect',index=${index})}" th:text="${index}"></a>
                         </li>
                         <li>
                             <a href="#">下一页</a>

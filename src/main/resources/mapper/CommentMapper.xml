@@ -10,20 +10,27 @@
         <collection property="replyList" column="id" select="com.blog.mapper.ReplyMapper.selectByCommentId"/>
     </resultMap>
 
+    <resultMap id="comment_userinfo" type="Comment">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="publishTime" column="publish_time"/>
+        <association property="blog" column="blog_id" select="com.blog.mapper.BlogMapper.selectById"/>
+    </resultMap>
+
     <resultMap id="comment_size" type="Comment">
         <id property="id" column="id"/>
     </resultMap>
 
-    <select id="selectByUserId" resultMap="comment">
-      select * from comment where user_id = #{userId};
+    <select id="selectByUserId" resultMap="comment_userinfo">
+      select * from comment where user_id = #{userId}
     </select>
 
     <select id="selectByBlogId" resultMap="comment_size">
-      select * from comment where blog_id = #{blogId};
+      select * from comment where blog_id = #{blogId}
     </select>
 
     <select id="selectCountByUserId" parameterType="int" resultType="_integer">
-        select count(*) from comment where user_id = #{userId};
+        select count(*) from comment where user_id = #{userId}
     </select>
 
 </mapper>

@@ -1,11 +1,9 @@
 package com.blog;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class BlogApplication/* extends SpringBootServletInitializer */{
+public class BlogApplication{
 
     // 如果不想使用 springboot 自带的 tomcat 部署项目的话，想使用自定义 tomcat 部署项目则需要 extends SpringBootServletInitializer 并覆盖 configure 方法
 //    @Override

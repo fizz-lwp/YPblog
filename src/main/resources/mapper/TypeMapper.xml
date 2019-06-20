@@ -7,17 +7,32 @@
         <result property="name" column="name"/>
     </resultMap>
 
-    <resultMap id="type_simple" type="Type">
-        <id column="id" property="id"/>
-        <result property="name" column="name"/>
-    </resultMap>
-
-    <select id="selectAll" resultMap="type_simple">
-        select * from type;
+    <select id="selectAll" resultMap="type_full">
+        select * from type
     </select>
 
-    <select id="selectById" resultMap="type_simple">
-        select * from type where id = #{id};
+    <select id="selectById" resultMap="type_full">
+        select * from type where id = #{id}
     </select>
+
+    <select id="selectByName" resultMap="type_full">
+        select * from type where name = #{name}
+    </select>
+
+    <select id="selectCount" resultType="_int">
+        select count(*) from type
+    </select>
+
+    <insert id="insert" parameterType="string">
+        insert into type(name) value(#{name})
+    </insert>
+
+    <update id="updateName" parameterType="string">
+        update type set name = #{param2} where name = #{param1}
+    </update>
+
+    <delete id="deleteByName" parameterType="string">
+        delete from type where name = #{name}
+    </delete>
 
 </mapper>

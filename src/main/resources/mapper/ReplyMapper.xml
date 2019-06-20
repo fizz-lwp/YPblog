@@ -11,11 +11,11 @@
     </resultMap>
 
     <select id="selectByCommentId" parameterType="int" resultMap="reply">
-      select * from reply where comment_id = #{commentId};
+      select * from reply where comment_id = #{commentId}
     </select>
 
     <select id="selectById" parameterType="int" resultType="Reply">
-      select * from reply where id = #{id};
+      select * from reply where id = #{id}
     </select>
 
 </mapper>

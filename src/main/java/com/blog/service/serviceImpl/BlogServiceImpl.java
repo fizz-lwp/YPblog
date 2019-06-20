@@ -17,30 +17,29 @@ public class BlogServiceImpl implements BlogService {
     BlogMapper blogMapper;
 
     @Override
+    public List<Blog> getBlogsByUserId(Integer userId){
+        return blogMapper.selectByUserId(userId);
+    }
+    @Override
     public List<Blog> getLatestBlogs(){
         return blogMapper.selectLatestLimit();
     }
-
     @Override
     public List<Blog> getReadestBlogs(){
         return blogMapper.selectHotestLimit();
     }
-
     @Override
     public List<Blog> getRecommendBlogs(){
         return blogMapper.selectRecommendLimit();
     }
-
     @Override
     public int editBlog(Blog blog){
         return blogMapper.insert(blog);
     }
-
     @Override
     public Blog getBlogById(Integer id){
         return blogMapper.selectById(id);
     }
-
     @Override
     public List<Blog> getListByCollectList(List<Collect> collectList){
         List<Blog> blogList = new LinkedList<>();
@@ -48,6 +47,24 @@ public class BlogServiceImpl implements BlogService {
             blogList.add(blogMapper.selectById(e.getBlog().getId()));
         }
         return blogList;
+    }
+    @Override
+    public void deleteBlogById(int blogId){
+        blogMapper.delete(blogId);
+    }
+    @Override
+    public Blog setRecommend(int blogId){
+        blogMapper.updateRecommend1(blogId);
+        return blogMapper.selectById(blogId);
+    }
+    @Override
+    public Blog setNoRecommend(int blogId){
+        blogMapper.updateRecommend0(blogId);
+        return blogMapper.selectById(blogId);
+    }
+    @Override
+    public int countBlog(){
+        return blogMapper.selectCount();
     }
 
 }

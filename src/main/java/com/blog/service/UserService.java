@@ -10,5 +10,9 @@ public interface UserService {
 //    int update(Integer id); // 修改用户
 //    int retrievePwd(); // 找回密码
     User getUserInfo(Integer id); // 获取用户信息
+    void deleteUserById(int userId); // 删除以用户
+    User lockUserById(int userId); // 更新用户的status字段，设为“禁用”
+    User unlockUserById(int userId); // 更新用户的status字段，设为“正常”
+    int countUser(); // 返回用户总数
 
 }

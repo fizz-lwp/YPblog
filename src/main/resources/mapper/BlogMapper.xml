@@ -45,35 +45,39 @@
     </resultMap>
 
     <select id="selectById" resultMap="blog_simple" parameterType="int">
-        select * from blog where id = #{id};
+        select * from blog where id = #{id}
     </select>
 
     <select id="selectByIdFull" parameterType="int" resultMap="blog">
-        select * from blog where id = #{id};
+        select * from blog where id = #{id}
     </select>
 
     <select id="selectCountByUserId" parameterType="int" resultType="_integer">
-        select count(*) from blog where user_id = #{userId};
+        select count(*) from blog where user_id = #{userId}
     </select>
 
     <select id="selectLatestLimit" resultMap="blog_index">
-        select * from blog order by publish_time desc limit 2;
+        select * from blog order by publish_time desc limit 2
     </select>
 
     <select id="selectRecommendLimit" resultMap="blog_index">
-        select * from blog where recommend = 1 limit 2;
+        select * from blog where recommend = 1 limit 2
     </select>
 
     <select id="selectHotestLimit" resultMap="blog_index">
-        select * from blog order by read_count desc limit 2;
+        select * from blog order by read_count desc limit 2
     </select>
 
     <select id="selectByUserId" resultMap="blog_userinfo">
-        select * from blog where user_id = #{userId};
+        select * from blog where user_id = #{userId}
+    </select>
+
+    <select id="selectCount" resultType="_int">
+        select count(*) from blog
     </select>
 
     <insert id="insert" parameterType="Blog">
-        insert into blog value(null,#{type.id},#{user.id},#{title},#{publishTime},#{recommend},#{readCount},#{collectCount},#{content},#{lastModifyTime});
+        insert into blog value(null,#{type.id},#{user.id},#{title},#{publishTime},#{recommend},#{readCount},#{collectCount},#{content},#{lastModifyTime})
     </insert>
 
     <update id="update" parameterType="Blog">
@@ -110,10 +114,18 @@
               text = #{text},
           </if>
       </trim>
-      where id = #{id};
+      where id = #{id}
     </update>
 
-    <delete id="deleteById" parameterType="int">
+    <update id="updateRecommend1" parameterType="int">
+        update blog set recommend = '1' where id = #{id}
+    </update>
+
+    <update id="updateRecommend0" parameterType="int">
+        update blog set recommend = '0' where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
         delete from blog where id = #{id}
     </delete>
 

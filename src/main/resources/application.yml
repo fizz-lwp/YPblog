@@ -1,8 +1,8 @@
 # spring config
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/blog_db?useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/blog_db?serverTimezone=UTC
     username: root
     password: 123456
 
@@ -20,4 +20,9 @@ logging:
   level:
     com.blog.mapper: DEBUG
 
-
+# pagehelper config
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

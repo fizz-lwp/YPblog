@@ -4,6 +4,8 @@ import com.blog.entity.Collect;
 import com.blog.entity.Comment;
 import com.blog.entity.User;
 import com.blog.service.BlogService;
+import com.blog.service.CollectService;
+import com.blog.service.CommentService;
 import com.blog.service.UserService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -22,6 +24,10 @@ public class UserController {
     UserService userService;
     @Autowired
     BlogService blogService;
+    @Autowired
+    CommentService commentService;
+    @Autowired
+    CollectService collectService;
 
     @RequestMapping("/login")
     public String login(User user, HttpSession session){
@@ -43,26 +49,27 @@ public class UserController {
     }
 
     @RequestMapping("/userinfo")
-    public String userinfo(String param_list,HttpSession session, Model model){
-        System.out.println();
+    public String userinfo(String param_list,Integer index,HttpSession session, Model model){
         User loginUser = (User)session.getAttribute("loginUser");
         User user = userService.getUserInfo(loginUser.getId());
-        PageHelper.startPage(1,10);
         switch (param_list){
             case "blog":
-                List<Blog> blogList = user.getBlogList();
+                PageHelper.startPage(index,10);
+                List<Blog> blogList = blogService.getBlogsByUserId(loginUser.getId());
                 PageInfo<Blog> blogs = new PageInfo<>(blogList);
                 model.addAttribute("blogList",blogs);
                 model.addAttribute("switch","blog");
                 break;
             case "comment":
-                List<Comment> commentList = user.getCommentList();
+                PageHelper.startPage(index,5);
+                List<Comment> commentList = commentService.getCommentsByUserId(loginUser.getId());
                 PageInfo<Comment> comments = new PageInfo<>(commentList);
                 model.addAttribute("commentList",comments);
                 model.addAttribute("switch","comment");
                 break;
             case "collect":
-                List<Collect> collectList = user.getCollectList();
+                PageHelper.startPage(index,10);
+                List<Collect> collectList = collectService.getCollectsByUserId(loginUser.getId());
                 List<Blog> collectBlogList = blogService.getListByCollectList(collectList);
                 PageInfo<Blog> collects = new PageInfo<>(collectBlogList);
                 model.addAttribute("collectList",collects);
@@ -74,7 +81,6 @@ public class UserController {
 //                model.addAttribute("blogList",blogs);
 //                break;
             default:
-                System.out.println("????????????");
                 model.addAttribute("switch","null");
                 break;
         }
