@@ -44,7 +44,20 @@
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectSimpleById"/>
     </resultMap>
 
-    <select id="selectAll" resultMap="blog_simple">
+    <resultMap id="blog_admin" type="Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="text" column="text"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="lastModifyTime" column="last_modify_time"/>
+        <result property="recommend" column="recommend"/>
+        <result property="readCount" column="read_count"/>
+        <result property="summary" column="summary"/>
+        <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="blog_admin">
         select * from blog;
     </select>
 

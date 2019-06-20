@@ -7,7 +7,12 @@
         <result property="name" column="name"/>
     </resultMap>
 
-    <select id="selectAll" resultMap="type_full">
+    <resultMap id="type_admin" type="Type">
+        <id column="id" property="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="type_admin">
         select * from type
     </select>
 
