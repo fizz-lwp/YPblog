@@ -9,6 +9,7 @@ import java.util.List;
 @Component
 public interface BlogMapper {
 
+    List<Blog> selectAll(); // 查询所有博客记录集
     Blog selectById(Integer id); // 按 ID 查询（首页）博客记录
     Blog selectByIdFull(Integer id); // 按 ID 查询（全）博客记录
     int selectCountByUserId(Integer userId); // 按字段 user_id 查询用户博客集大小

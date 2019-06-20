@@ -4,10 +4,13 @@ import com.blog.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface UserMapper {
 
+    List<User> selectAll(); // 查询所有用户记录集
     User selectUser(String name,String password); // 按字段 name,password 查询用户记录
     User selectById(Integer id); // 按 ID 查询用户记录
     User selectFullById(Integer id); // 按 ID 查询用户(基本全)记录

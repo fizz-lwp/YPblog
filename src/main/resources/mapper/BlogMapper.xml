@@ -44,6 +44,10 @@
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectSimpleById"/>
     </resultMap>
 
+    <select id="selectAll" resultMap="blog_simple">
+        select * from blog;
+    </select>
+
     <select id="selectById" resultMap="blog_simple" parameterType="int">
         select * from blog where id = #{id}
     </select>

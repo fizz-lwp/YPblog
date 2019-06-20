@@ -32,6 +32,10 @@
         <result column="status" property="status"/>
     </resultMap>
 
+    <select id="selectAll" resultMap="user_simple">
+        select * from user;
+    </select>
+
     <select id="selectFullById" parameterType="int" resultMap="user_full">
         select * from user where id = #{id}
     </select>
