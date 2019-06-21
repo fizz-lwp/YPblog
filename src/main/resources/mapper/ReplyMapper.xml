@@ -18,4 +18,8 @@
       select * from reply where id = #{id}
     </select>
 
+    <insert id="insert" parameterType="Reply">
+        insert into reply value(null,#{content},#{publishTime},#{sender.id},#{receiver.id},#{comment.id})
+    </insert>
+
 </mapper>

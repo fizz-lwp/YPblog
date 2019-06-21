@@ -21,16 +21,28 @@
         <id property="id" column="id"/>
     </resultMap>
 
+    <resultMap id="comment_blog" type="Comment">
+        <id property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="publishTime" column="publish_time"/>
+        <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectSimpleById"/>
+        <collection property="replyList" column="id" select="com.blog.mapper.ReplyMapper.selectByCommentId"/>
+    </resultMap>
+
     <select id="selectByUserId" resultMap="comment_userinfo">
       select * from comment where user_id = #{userId}
     </select>
 
-    <select id="selectByBlogId" resultMap="comment_size">
+    <select id="selectByBlogId" resultMap="comment_blog">
       select * from comment where blog_id = #{blogId}
     </select>
 
     <select id="selectCountByUserId" parameterType="int" resultType="_integer">
         select count(*) from comment where user_id = #{userId}
     </select>
+
+    <insert id="insert" parameterType="Comment">
+        insert into comment value(null,#{user.id},#{blog.id},#{content},#{publishTime})
+    </insert>
 
 </mapper>

@@ -52,5 +52,9 @@ public class TypeServiceImpl implements TypeService {
     public int countType(){
         return typeMapper.selectCount();
     }
+    @Override
+    public Type getType(String name){
+        return typeMapper.selectByName(name);
+    }
 
 }

@@ -13,18 +13,17 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
                 registry.addViewController("/reg.html").setViewName("default/reg");
-                registry.addViewController("login.html").setViewName("default/login");
-                registry.addViewController("sample.html").setViewName("sample/sample");
-                registry.addViewController("edit_blog.html").setViewName("login_only/edit_blog");
-                registry.addViewController("forget_pwd.html").setViewName("default/forget_pwd");
-                registry.addViewController("edit_userinfo.html").setViewName("login_only/edit_userinfo");
-                registry.addViewController("blog_manage.html").setViewName("admin/blog_manage");
+                registry.addViewController("/login.html").setViewName("default/login");
+                registry.addViewController("/forget_pwd.html").setViewName("default/forget_pwd");
+                registry.addViewController("/edit_userinfo.html").setViewName("login_only/edit_userinfo");
+                registry.addViewController("/blog_manage.html").setViewName("admin/blog_manage");
+                registry.addViewController("/edit_blog.html").setViewName("login_only/edit_blog");
             }
 
             // 配置系统资源的虚拟路径
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry){
-                registry.addResourceHandler("/upload/**").addResourceLocations("file:D:\\upload\\");
+                registry.addResourceHandler("/upload/blog_photo/**").addResourceLocations("file:D:\\upload\\blog_photo\\");
                 registry.addResourceHandler("/img/**").addResourceLocations("file:D:\\Study\\Projects\\blog\\src\\main\\resources\\static\\img\\");
                 registry.addResourceHandler("/upload/head_photo/**").addResourceLocations("file:D:\\upload\\head_photo\\");
             }

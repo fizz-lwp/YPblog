@@ -4,10 +4,7 @@ import com.blog.mapper.BlogMapper;
 import com.blog.mapper.CommentMapper;
 import com.blog.mapper.ReplyMapper;
 import com.blog.mapper.UserMapper;
-import com.blog.service.BlogService;
-import com.blog.service.CommentService;
-import com.blog.service.TypeService;
-import com.blog.service.UserService;
+import com.blog.service.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.session.RowBounds;
@@ -17,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +38,8 @@ public class BlogApplicationTests {
     TypeService typeService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    ReplyService replyService;
 
     @Test
     public void test() {
@@ -102,12 +102,17 @@ public class BlogApplicationTests {
 
     @Test
     public void testType(){
-        PageHelper.startPage(3,1);
-        List<Comment> commentList = commentMapper.selectByBlogId(1);
-        PageInfo<Comment> comments = new PageInfo<>(commentList);
-        for(Comment e:comments.getList()){
-            System.out.println(e);
-        }
+        Reply reply = new Reply();
+        User sender = new User();
+        User receiver = new User();
+        Comment comment = new Comment();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        reply.setSender(sender);
+        reply.setReceiver(receiver);
+        reply.setContent("hello");
+        reply.setPublishTime(timestamp);
+        reply.setComment(comment);
+        replyService.saveReply(reply);
     }
 
 }

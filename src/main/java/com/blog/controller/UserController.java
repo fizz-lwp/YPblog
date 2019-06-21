@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Controller
@@ -86,6 +87,18 @@ public class UserController {
         }
         model.addAttribute("user",user);
         return "login_only/userinfo";
+    }
+
+    @RequestMapping("/comment")
+    public String comment(Comment comment,int blogId,HttpSession session){
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        Blog blog = new Blog();
+        blog.setId(blogId);
+        comment.setPublishTime(time);
+        comment.setBlog(blog);
+        comment.setUser((User)session.getAttribute("loginUser"));
+        commentService.saveComment(comment);
+        return "redirect:/blog?id="+blogId;
     }
 
 }

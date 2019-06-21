@@ -22,9 +22,9 @@ public class IndexController {
     @RequestMapping("index.html")
     public String index(HttpSession session, Model model){
         List<Type> typeList = typeService.getAllTypes();
-        List<Blog> latestBlogs = blogService.getLatestBlogs();
-        List<Blog> hotestBlogs = blogService.getReadestBlogs();
-        List<Blog> recommendBlogs = blogService.getRecommendBlogs();
+        List<Blog> latestBlogs = blogService.getLatestBlogs(2);
+        List<Blog> hotestBlogs = blogService.getReadestBlogs(2);
+        List<Blog> recommendBlogs = blogService.getRecommendBlogs(2);
         model.addAttribute("latestBlogs",latestBlogs);
         model.addAttribute("hotestBlogs",hotestBlogs);
         model.addAttribute("recommendBlogs",recommendBlogs);

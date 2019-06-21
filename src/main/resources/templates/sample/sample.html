@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>模板</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -52,7 +53,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">写文章</a>
+                    <a th:href="@{/edit_blog.html}">写文章</a>
                 </li>
                 <li>
                     <a th:href="@{/userinfo(param_list='blog',index=1)}" th:text="${session.loginUser.name}"></a>
@@ -69,7 +70,7 @@
             <h3 th:text="${user.commentList.size()}" style="float:right;color:dodgerblue;margin-right:24%;"></h3>
             <p style="clear:both;float:left;margin-left:22%;">发布</p>
             <p style="float:right;margin-right:22%;">评论</p>
-            <button type="button" class="btn btn-default" style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button>
+            <a th:href="@{/edit_userinfo.html}"><button type="button" class="btn btn-default" style="width:80%;margin-left:10%;clear:both;">编辑个人资料</button></a>
         </div>
         <div style="width:250px;height:280px;background-color:#FAFAFA;margin-top:20px;padding-top:20px;">
             <div style="margin-left:40px;">

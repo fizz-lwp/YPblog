@@ -7,9 +7,9 @@ import java.util.List;
 public interface BlogService {
 
     int editBlog(Blog blog); // 编辑博客
-    List<Blog> getLatestBlogs(); // 获取最新博客集
-    List<Blog> getReadestBlogs(); // 获取最热博客集
-    List<Blog> getRecommendBlogs(); // 获取推荐博客集
+    List<Blog> getLatestBlogs(int limit); // 获取最新博客集
+    List<Blog> getReadestBlogs(int limit); // 获取最热博客集
+    List<Blog> getRecommendBlogs(int limit); // 获取推荐博客集
     Blog getBlogById(Integer id); // 获取指定博客
     List<Blog> getListByCollectList(List<Collect> collectList); //
     List<Blog> getBlogsByUserId(Integer userId); //
@@ -18,5 +18,6 @@ public interface BlogService {
     Blog setNoRecommend(int blogId); // 设置博客为非推荐状态 recommend=0
     int countBlog(); // 返回博客总数
     List<Blog> getAllBlogs(); // 返回所有博客记录集
+    int saveBlog(Blog blog); // 保存博客记录
 
 }

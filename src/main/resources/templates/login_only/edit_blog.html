@@ -4,8 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>编写 blog</title>
     <link rel="stylesheet" th:href="@{/editormd/css/editormd.css}"/>
-    <link rel="stylesheet" th:href="@{/css/bar.css}"/>
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
         *{
             margin:0;
@@ -32,15 +34,15 @@
             float:left;
         }
         #type input{
-            height:30px;
-            width:89%;
+            height:35px;
+            width:90%;
             margin-left:5%;
             margin-top:20px;
             padding-left:5px;
         }
-        #detail input{
-            height:30px;
-            width:89%;
+        #detail select{
+            height:35px;
+            width:90%;
             margin-left:5%;
             margin-top:20px;
             padding-left:5px;
@@ -73,12 +75,13 @@
             border:1px solid #FAFAFA;
         }
         #button button{
-            background-color: #00c4ff;
+            background-color: mediumseagreen;
             border-radius: 4px;
-            border:1px solid #00c4ff;
+            border:1px solid mediumseagreen;
             width:105px;
             height:36px;
             font-size:20px;
+            margin-left:34%;
         }
         #button{
             height:60px;
@@ -90,50 +93,55 @@
 </head>
 <body>
 
-    <div th:replace="sample/bar::bar"></div>
-    <form th:action="@{/commit}" method="post">
-        <div id="left">
-            <div id="type">
-                <input type="text" placeholder="请输入标题" name="title"/>
+    <div class="container">
+        <div th:replace="sample/sample::bar_login"></div>
+        <form th:action="@{/commit}" method="post">
+            <div id="left">
+                <div id="type">
+                    <input type="text" placeholder="请输入标题" name="title"/>
+                </div>
+                <div id="detail">
+                    <select class="form-control" name="typeName">
+                        <option>请选择栏目</option>
+                        <option th:each="type:${typeList}" th:text="${type.name}"></option>
+                    </select>
+                </div>
+                <div class="editormd" id="content">
+                    <textarea class="editormd-markdown-textarea" name="text" id="editContent"></textarea>
+                    <!-- 将构造出来的 HTML 代码储存在第二个隐藏的 textarea 域中 -->
+                    <textarea class="editormd-html-textarea" name="content" id="htmlContent"></textarea>
+                </div>
             </div>
-            <div id="detail">
-                <input type="text" placeholder="请选择栏目"/>
+            <div id="right">
+                <div id="summary">
+                    <text>请输入博客的概述</text>
+                    <hr/>
+                    <textarea name="summary"></textarea>
+                </div>
+                <div id="button">
+                    <button type="submit">保&nbsp;&nbsp;存</button>
+                </div>
             </div>
-            <div class="editormd" id="content">
-                <textarea class="editormd-markdown-textarea" name="editContent" id="editContent"></textarea>
-                <!-- 将构造出来的 HTML 代码储存在第二个隐藏的 textarea 域中 -->
-                <textarea class="editormd-html-textarea" name="htmlContent" id="htmlContent"></textarea>
-            </div>
-        </div>
-        <div id="right">
-            <div id="summary">
-                <text>请输入博客的概述</text>
-                <hr/>
-                <textarea></textarea>
-            </div>
-            <div id="button">
-                <button type="submit">保&nbsp;&nbsp;存</button>
-            </div>
-        </div>
-    </form>
-    <script th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
-    <script th:src="@{/editormd/editormd.js}"></script>
-    <script type="text/javascript">
-        $(function() {
-            editormd("content", {
-                width   : "90%",
-                height  : 640,
-                syncScrolling : "single",
-                path    : "/editormd/lib/",
-                // 将构造出来的 HTML 代码储存在第二个隐藏的 textarea 域中
-                saveHTMLToTextarea : true,
-                // 文件上传支持
-                imageUpload : true,
-                imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp", "webp" ],
-                imageUploadURL : "/uploadFile"
+        </form>
+        <script th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+        <script th:src="@{/editormd/editormd.js}"></script>
+        <script type="text/javascript">
+            $(function() {
+                editormd("content", {
+                    width   : "90%",
+                    height  : 640,
+                    syncScrolling : "single",
+                    path    : "/editormd/lib/",
+                    // 将构造出来的 HTML 代码储存在第二个隐藏的 textarea 域中
+                    saveHTMLToTextarea : true,
+                    // 文件上传支持
+                    imageUpload : true,
+                    imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp", "webp" ],
+                    imageUploadURL : "/uploadFile"
+                });
             });
-        });
-    </script>
+        </script>
+    </div>
 
 </body>
 </html>

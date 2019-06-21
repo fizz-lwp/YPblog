@@ -14,7 +14,7 @@
         <result property="summary" column="summary"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
-        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByUserId"/>
+        <collection property="commentList" column="id" select="com.blog.mapper.CommentMapper.selectByBlogId"/>
     </resultMap>
 
     <resultMap id="blog_index" type="Blog">
@@ -40,6 +40,7 @@
         <id property="id" column="id"/>
         <result property="title" column="title"/>
         <result property="publishTime" column="publish_time"/>
+        <result property="readCount" column="read_count"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectSimpleById"/>
     </resultMap>
@@ -57,6 +58,18 @@
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
     </resultMap>
 
+    <select id="selectHotest" parameterType="int" resultMap="blog_index">
+        select * from blog order by read_count desc limit ${limit}
+    </select>
+
+    <select id="selectLatest" parameterType="int" resultMap="blog_index">
+        select * from blog order by publish_time desc limit ${limit}
+    </select>
+
+    <select id="selectRecommend" parameterType="int" resultMap="blog_index">
+        select * from blog where recommend = 1 limit ${limit}
+    </select>
+
     <select id="selectAll" resultMap="blog_admin">
         select * from blog
     </select>
@@ -73,18 +86,6 @@
         select count(*) from blog where user_id = #{userId}
     </select>
 
-    <select id="selectLatestLimit" resultMap="blog_index">
-        select * from blog order by publish_time desc limit 2
-    </select>
-
-    <select id="selectRecommendLimit" resultMap="blog_index">
-        select * from blog where recommend = 1 limit 2
-    </select>
-
-    <select id="selectHotestLimit" resultMap="blog_index">
-        select * from blog order by read_count desc limit 2
-    </select>
-
     <select id="selectByUserId" resultMap="blog_userinfo">
         select * from blog where user_id = #{userId}
     </select>
@@ -94,7 +95,7 @@
     </select>
 
     <insert id="insert" parameterType="Blog">
-        insert into blog value(null,#{type.id},#{user.id},#{title},#{publishTime},#{recommend},#{readCount},#{collectCount},#{content},#{lastModifyTime})
+        insert into blog value(null,#{title},#{summary},#{content},#{text},#{publishTime},#{lastModifyTime},#{recommend},#{readCount},#{type.id},#{user.id})
     </insert>
 
     <update id="update" parameterType="Blog">

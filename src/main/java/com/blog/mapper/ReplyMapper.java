@@ -11,5 +11,6 @@ public interface ReplyMapper {
 
     List<Reply> selectByCommentId(Integer commentId); // 按字段 comment_id 查询回复记录集
     Reply selectById(Integer id); //
+    int insert(Reply reply); // 插入回复记录
 
 }

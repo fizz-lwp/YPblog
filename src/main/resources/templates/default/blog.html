@@ -5,21 +5,122 @@
     <title>阅读 blog</title>
     <link rel="stylesheet" th:href="@{/editormd/css/editormd.preview.css}" />
     <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function reply(obj) {
+            var id = obj.getAttribute("data-id");
+            var receiver = obj.getAttribute("data-receiver");
+            var input = "input" + id;
+            var ru = "ru" + id;
+            document.getElementById(input).style.display = 'block';
+            document.getElementById(ru).setAttribute("value",receiver);
+        }
+    </script>
 </head>
-<body>
-    <!-- 解析 HTML 容器 -->
-    <div id="test-editormd-view2">
-        <textarea th:text="${blog.text}"></textarea>
+<body style="background-color:#FAFAFA;">
+
+    <div class="container">
+        <!-- bar && bar_login -->
+        <div th:if="not ${session.loginUser}">
+            <div th:replace="sample/sample::bar"></div>
+        </div>
+        <div th:if="${session.loginUser}">
+            <div th:replace="sample/sample::bar_login"></div>
+        </div>
+        <!-- main -->
+        <div style="width:100%;margin-top:0;">
+            <!-- left -->
+            <div style="float:left;height:100%;width:75%;">
+                <!-- up -->
+                <div style="width:100%;background-color:white;">
+                    <!-- box -->
+                    <div style="width:95%;height:96%;margin-left:3%;padding-top:10px;">
+                        <h3 th:text="${blog.title}"></h3>
+                        <p style="color:#AAAAAA;" th:text="'作者: '+${blog.user.name}+' '+${blog.publishTime}+' · '+${blog.readCount}+' 阅读'"></p>
+                        <hr style="color:#AAAAAA;"/>
+                        <!-- 解析 HTML 容器 -->
+                        <div id="test-editormd-view2">
+                            <textarea th:text="${blog.content}"></textarea>
+                        </div>
+                        <script th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+                        <script th:src="@{/editormd/lib/marked.min.js}"></script>
+                        <script th:src="@{/editormd/lib/prettify.min.js}"></script>
+                        <script th:src="@{/editormd/editormd.js}"></script>
+                        <!-- 解析 HTML -->
+                        <script type="text/javascript">
+                            editormd.markdownToHTML("test-editormd-view2", {
+                                htmlDecode : "style,script,iframe"
+                            });
+                        </script>
+                    </div>
+                </div>
+                <!-- down -->
+                <div style="margin-top:25px;width:100%;background-color:white;">
+                    <div id="box" style="width:95%;height:96%;margin-left:3%;padding-top:10px;">
+                        <h4 th:text="'全部评论: '+${blog.commentList.size()}+'条'"></h4>
+                        <hr style="color:#AAAAAA;"/>
+                        <div th:each="comment,index:${blog.commentList}" style="clear:both;width:100%;">
+                            <div id="left" style="margin-bottom:8px;float:left;height:100%;width:9%;">
+                                <a style="float:left;" ><img style="width:40px;height:40px;" th:src="${comment.user.headPhoto}"/></a>
+                                <p style="float:right;color:#aaaaaa;" th:text="${comment.user.name}"></p>
+                            </div>
+                            <div id="right" style="padding-left:8px;margin-bottom:8px;float:right;height:100%;width:91%;">
+                                <p th:text="${comment.content}"></p>
+                                <div th:each="reply:${comment.replyList}" style="margin-top:3px;float:right;background-color:#FAFAFA;width:90%;">
+                                    <div id="others" style="width:95%;height:100%;float:left;">
+                                        <a style="float:left;" ><img style="width:30px;height:30px;" th:src="${reply.sender.headPhoto}"/></a>
+                                        <p style="float:left;color:#aaaaaa;margin-left:5px;margin-right:5px;" th:text="${reply.sender.name}"></p>
+                                        <p style="float:left;" th:text="回复"></p>
+                                        <p style="float:left;color:#aaaaaa;margin-left:5px;" th:text="${reply.receiver.name}"></p>
+                                        <p style="float:left;margin-left:5px;" th:text="${reply.content}"></p>
+                                    </div>
+                                    <div id="reply_button" style="width:5%;height:100%;float:right;">
+                                        <a th:attr="data-receiver=${reply.sender.id},data-id=${index.index+1}" onclick="reply(this)" href="#" style="text-decoration:none;color:#aaaaaa;margin-top:3px;">回复</a>
+                                    </div>
+                                </div>
+                                <div th:id="'input'+${index.index+1}" style="display:none;float:right;width:90%;margin-top:5px;">
+                                    <form th:action="@{/reply(commentId=${comment.id},blogId=${blog.id})}" method="post">
+                                        <input th:id="'ru'+${index.index+1}" name="receiverId" type="text" style="display:none;"/>
+                                        <textarea name="content" class="form-control" rows="3" style="clear:both;width:100%;" placeholder="请输入回复内容"></textarea>
+                                        <button class="btn btn-default" style="float:right;margin-top:3px;height:28px;padding-top:3px;" type="submit">回复</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="clear:both;">我有话说:</p>
+                        <form th:action="@{/comment(blogId=${blog.id})}" method="post">
+                            <textarea placeholder="请输入评论内容" class="form-control" rows="3" name="content"></textarea>
+                            <button class="btn btn-default" style="float:right;margin-top:5px;" type="submit">发表</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- right -->
+            <div style="float:right;height:100%;width:23%;">
+                <div style="width:100%;height:280px;background-color:white;">
+                    <div style="padding-left:33%;padding-top:5%;"><img th:src="@{${blog.user.headPhoto}}" style="width:45%;height:45%;"/></div>
+                    <hr/>
+                    <h3 th:text="${blog.user.blogList.size()}" style="float:left;color:dodgerblue;margin-left:24%;"></h3>
+                    <h3 th:text="${blog.user.commentList.size()}" style="float:right;color:dodgerblue;margin-right:24%;"></h3>
+                    <p style="clear:both;float:left;margin-left:22%;">发布</p>
+                    <p style="float:right;margin-right:22%;">评论</p>
+                    <a href="#"><button type="button" class="btn btn-default" th:text="收藏" style="width:80%;margin-left:10%;clear:both;"></button></a>
+                </div>
+                <div style="padding-left:10px;padding-top:10px;margin-top:20px;width:100%;height:180px;background-color:white;">
+                    <img th:src="@{/img/post_logo.png}"/>&nbsp;热门文章
+                    <hr/>
+                    <a style="text-decoration:none;color:black;" th:each="blog:${hotestBlogs}" th:href="@{/blog(id=${blog.id})}"><p th:text="${blogStat.index}+1+'. '+${blog.title}"></p></a>
+                </div>
+                <div style="padding-left:10px;padding-top:10px;margin-top:20px;width:100%;height:180px;background-color:white;">
+                    <img th:src="@{/img/comment_logo.png}"/>&nbsp;最新发布
+                    <hr/>
+                    <a style="text-decoration:none;color:black;" th:each="blog:${latestBlogs}" th:href="@{/blog(id=${blog.id})}"><p th:text="${blogStat.index}+1+'. '+${blog.title}"></p></a>
+                </div>
+            </div>
+        </div>
     </div>
-<script th:src="@{/webjars/jquery/3.3.1-2/jquery.min.js}"></script>
-<script th:src="@{/editormd/lib/marked.min.js}"></script>
-<script th:src="@{/editormd/lib/prettify.min.js}"></script>
-<script th:src="@{/editormd/editormd.js}"></script>
-<!-- 解析 HTML -->
-<script type="text/javascript">
-    editormd.markdownToHTML("test-editormd-view2", {
-        htmlDecode : "style,script,iframe"
-    });
-</script>
+
 </body>
 </html>
