@@ -50,6 +50,10 @@ public class BlogController {
     @RequestMapping("/blog")
     public String blog(String id,Model model){
         Blog blog = blogService.getBlogById(Integer.valueOf(id));
+        //阅读加一
+        blog.setReadCount(blog.getReadCount()+1);
+        blogService.saveBlog(blog) ;
+
         model.addAttribute("blog",blog);
         List<Blog> latestBlogs = blogService.getLatestBlogs(3);
         List<Blog> hotestBlogs = blogService.getReadestBlogs(3);

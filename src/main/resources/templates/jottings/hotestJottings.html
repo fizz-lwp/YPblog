@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>最新随笔</title>
+    <title>热门随笔</title>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -57,16 +57,16 @@
         <div class="row clearfix">
             <div class="col-md-12 column">
                 <div class="page-header" >
-                    <h3>最新更新</h3>
+                    <h3>热门随笔</h3>
                 </div>
-                <div th:each="latestJotting:${latestJottings.getList()}" class="col-md-6 column">
-                    <img th:src="@{${latestJotting.user.headPhoto}}" style="float:left"/>
-                    <span class="label label-default" th:text="${latestJotting.type.name}"></span>
-                    <h4 th:text="${latestJotting.title}" style="float:left"></h4>
-                    <p class="count" th:text="${latestJotting.commentList.size()}+' 评论'"></p>
-                    <p class="count" th:text="${latestJotting.readCount}+' 浏览 ·'"></p>
-                    <p class="first_p" th:text="${latestJotting.summary}"></p>
-                    <p><a class="btn" href="#" th:href="@{/blog(id=${latestJotting.id})}">阅读博客</a></p>
+                <div th:each="Jotting:${hotestJottings.getList()}" class="col-md-6 column">
+                    <img th:src="@{${Jotting.user.headPhoto}}" style="float:left"/>
+                    <span class="label label-default" th:text="${Jotting.type.name}"></span>
+                    <h4 th:text="${Jotting.title}" style="float:left"></h4>
+                    <p class="count" th:text="${Jotting.commentList.size()}+' 评论'"></p>
+                    <p class="count" th:text="${Jotting.readCount}+' 浏览 ·'"></p>
+                    <p class="first_p" th:text="${Jotting.summary}"></p>
+                    <p><a class="btn" href="#" th:href="@{/blog(id=${Jotting.id})}">阅读博客</a></p>
                 </div>
                 <!--这里分页-->
                 <div class="page">
@@ -74,11 +74,11 @@
                     <li th:class="${session.pageNow == 1}?'disabled':''">
                         <a href="#" th:href="@{/user/jottings/page(index=${session.pageNow}-1)}">Prev</a>
                     </li>
-                    <li th:each="i :${#numbers.sequence(1,latestJottings.getPages())}"  th:class="${session.pageNow == i}?'active disable':''" >
+                    <li th:each="i :${#numbers.sequence(1,hotestJottings.getPages())}"  th:class="${session.pageNow == i}?'active disable':''" >
                         <a href="#"  th:href="@{/user/jottings/page(index=${i})}" th:text="${i}"> 1</a>
                     </li>
 
-                    <li th:class="${session.pageNow == latestJottings.getPages()}?'disabled':''">
+                    <li th:class="${session.pageNow == hotestJottings.getPages()}?'disabled':''">
                         <a href="#" th:href="@{/user/jottings/page(index=${session.pageNow}+1)}" >Next</a>
                     </li>
                 </ul>

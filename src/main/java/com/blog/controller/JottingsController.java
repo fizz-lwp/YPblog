@@ -21,7 +21,7 @@ public class JottingsController {
     @Autowired
     private BlogService blogService ;
 
-    @GetMapping("/blog/{id}")
+    @GetMapping("/blog/type/{id}")
     public String jottingsIndex(@PathVariable(name = "id") int id , Model model){
         if (id != 1)
             return "error/404" ;
@@ -43,11 +43,25 @@ public class JottingsController {
         return "jottings/LatestJottings" ;
     }
     @GetMapping("/jotting/hotestindex")
-    public String hotestindex(Model model){
+    public String hotestindex(Model model,HttpSession session){
+        PageHelper.startPage(1,5);
+        List<Blog> blogsOrderByReadCount = blogService.getBlogsOrderByReadCount(1, null);
+        PageInfo<Blog> pageInfo = new PageInfo<>(blogsOrderByReadCount);
+
+        model.addAttribute("hotestJottings",pageInfo) ;
+        session.setAttribute("pageNow",1);
+
         return "jottings/hotestJottings" ;
     }
     @GetMapping("/jotting/recommendindex")
-    public String recommendindex(Model model){
+    public String recommendindex(Model model ,HttpSession session ){
+        PageHelper.startPage(1,5);
+        List<Blog> recommendBlogs = blogService.getRecommendBlogs(1, null);
+        PageInfo<Blog> blogPageInfo = new PageInfo<>(recommendBlogs);
+
+        model.addAttribute("recommendJottings",blogPageInfo);
+        session.setAttribute("pageNow" ,1);
+
         return  "jottings/recommendJottings" ;
     }
 

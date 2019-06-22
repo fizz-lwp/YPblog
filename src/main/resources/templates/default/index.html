@@ -62,7 +62,7 @@
                     <p class="count" th:text="${latestBlog.commentList.size()}+' 评论'"></p>
                     <p class="count" th:text="${latestBlog.readCount}+' 浏览 ·'"></p>
                     <p class="first_p" th:text="${latestBlog.summary}"></p>
-                    <p><a class="btn" href="#">阅读博客</a></p>
+                    <p><a class="btn" href="#" th:href="@{/blog(id=${latestBlog.id})}">阅读博客</a></p>
                 </div>
             </div>
             <div class="col-md-12 column">
@@ -76,7 +76,7 @@
                     <p class="count" th:text="${hotestBlog.commentList.size()}+' 评论'"></p>
                     <p class="count" th:text="${hotestBlog.readCount}+' 浏览 ·'"></p>
                     <p class="first_p" th:text="${hotestBlog.summary}"></p>
-                    <p><a class="btn" href="#">阅读博客</a></p>
+                    <p><a class="btn" href="#" th:href="@{/blog(id=${hotestBlog.id})}">阅读博客</a></p>
                 </div>
             </div>
             <div class="col-md-12 column">
@@ -90,7 +90,7 @@
                     <p class="count" th:text="${recommendBlog.commentList.size()}+' 评论'"></p>
                     <p class="count" th:text="${recommendBlog.readCount}+' 浏览 ·'"></p>
                     <p class="first_p" th:text="${recommendBlog.summary}"></p>
-                    <p><a class="btn" href="#">阅读博客</a></p>
+                    <p><a class="btn" href="#" th:href="@{/blog(id=${recommendBlog.id})}">阅读博客</a></p>
                 </div>
             </div>
         </div>

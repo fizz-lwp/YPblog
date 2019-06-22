@@ -12,12 +12,12 @@
     <!-- bar -->
     <nav class="navbar navbar-default" role="navigation" th:fragment="bar">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#" th:href="@{/}">首页</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li th:each="type:${session.typeList}" class="active">
-                    <a href="#" th:text="${type.name}" th:href="@{/user/blog/{id}(id=${type.id})}"></a>
+                    <a href="#" th:text="${type.name}" th:href="@{/user/blog/type/{id}(id=${type.id})}"></a>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -38,12 +38,12 @@
     <!-- bar_login -->
     <nav class="navbar navbar-default" role="navigation" th:fragment="bar_login">
         <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#" th:href="@{/}">s首页</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li th:each="type:${session.typeList}" class="active">
-                    <a href="#" th:text="${type.name}"  th:href="@{/user/blog/{id}(id=${type.id})}"></a>
+                    <a href="#" th:text="${type.name}"  th:href="@{/user/blog/type/{id}(id=${type.id})}"></a>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
