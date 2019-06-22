@@ -22,12 +22,12 @@ public class UploadController {
     public @ResponseBody Map<String,Object> demo(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request) {
         Map<String,Object> resultMap = new HashMap<>();
         System.out.println(request.getContextPath());
-        String fileName = file.getOriginalFilename();
+        String fileName = file.getName();
         //保存
         try {
             byte[] bytes = file.getBytes();
             // 文件存储路径
-            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
+            Path path = Paths.get(UPLOADED_FOLDER + file.getName());
             Files.write(path, bytes);
             resultMap.put("success", 1);
             resultMap.put("message", "上传成功！");

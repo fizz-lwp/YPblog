@@ -24,7 +24,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry){
                 registry.addResourceHandler("/upload/blog_photo/**").addResourceLocations("file:D:\\upload\\blog_photo\\");
-                registry.addResourceHandler("/img/**").addResourceLocations("file:D:\\Study\\Projects\\blog\\src\\main\\resources\\static\\img\\");
+//                registry.addResourceHandler("/img/**").addResourceLocations("file:D:\\Study\\Projects\\blog\\src\\main\\resources\\static\\img\\");
                 registry.addResourceHandler("/upload/head_photo/**").addResourceLocations("file:D:\\upload\\head_photo\\");
             }
         };

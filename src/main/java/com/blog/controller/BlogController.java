@@ -52,7 +52,7 @@ public class BlogController {
         Blog blog = blogService.getBlogById(Integer.valueOf(id));
         //阅读加一
         blog.setReadCount(blog.getReadCount()+1);
-        blogService.saveBlog(blog) ;
+
 
         model.addAttribute("blog",blog);
         List<Blog> latestBlogs = blogService.getLatestBlogs(3);
