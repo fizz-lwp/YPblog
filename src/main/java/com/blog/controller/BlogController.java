@@ -1,19 +1,16 @@
 package com.blog.controller;
 import com.blog.entity.*;
-import com.blog.mapper.BlogMapper;
 import com.blog.service.BlogService;
 import com.blog.service.ReplyService;
 import com.blog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
-import java.util.Date;
+
 import java.util.List;
 
 @Controller
@@ -52,7 +49,7 @@ public class BlogController {
         Blog blog = blogService.getBlogById(Integer.valueOf(id));
         //阅读加一
         blog.setReadCount(blog.getReadCount()+1);
-
+        blogService.saveBlog(blog);
 
         model.addAttribute("blog",blog);
         List<Blog> latestBlogs = blogService.getLatestBlogs(3);

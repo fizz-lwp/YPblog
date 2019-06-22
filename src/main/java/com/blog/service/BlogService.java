@@ -23,5 +23,6 @@ public interface BlogService {
     int countBlog(); // 返回博客总数
     List<Blog> getAllBlogs(); // 返回所有博客记录集
     int saveBlog(Blog blog); // 保存博客记录
+    int updateBlog(Blog blog); // 更新博客记录
 
 }
