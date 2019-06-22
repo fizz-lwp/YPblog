@@ -7,10 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -35,13 +32,13 @@ public class BlogServiceImpl implements BlogService {
             Random random = new Random(47);
             List<Blog> blogList = blogMapper.selectRecommendBlogs(typeId); // all or 2*num ?
             List<Blog> result = new ArrayList<>(num);
-            boolean[] booleans = new boolean[blogList.size()];
+            Map<Integer,Integer> booleans = new HashMap<>(num);
             int number;
             for(int i = 0;i < num;i++){
                 do{
                     number = random.nextInt(blogList.size());
-                }while(booleans[i]);
-                booleans[i] = true;
+                }while(booleans.containsKey(number));
+                booleans.put(number,null);
                 result.add(blogList.get(number));
             }
             return result;

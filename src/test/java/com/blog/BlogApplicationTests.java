@@ -15,10 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -104,7 +101,19 @@ public class BlogApplicationTests {
 
     @Test
     public void testType(){
-
+        Integer typeId = null,num = 2;
+        Random random = new Random(47);
+        List<Blog> blogList = blogMapper.selectRecommendBlogs(typeId); // all or 2*num ?
+        List<Blog> result = new ArrayList<>(num);
+        Map<Integer,Integer> booleans = new HashMap<>(num);
+        int number;
+        for(int i = 0;i < num;i++){
+            do{
+                number = random.nextInt(blogList.size());
+            }while(booleans.containsKey(number));
+            booleans.put(number,null);
+            result.add(blogList.get(number));
+        }
     }
 
 }
