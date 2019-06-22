@@ -31,10 +31,11 @@ public class BlogServiceImpl implements BlogService {
         else{
             Random random = new Random(System.currentTimeMillis());
             List<Blog> blogList = blogMapper.selectRecommendBlogs(typeId); // all or 2*num ?
-            List<Blog> result = new ArrayList<>(num);
-            Map<Integer,Integer> booleans = new HashMap<>(num);
+            int tnum = Math.min(num,blogList.size());
+            List<Blog> result = new ArrayList<>(tnum);
+            Map<Integer,Integer> booleans = new HashMap<>(tnum);
             int number;
-            for(int i = 0;i < num;i++){
+            for(int i = 0;i < tnum;i++){
                 do{
                     number = random.nextInt(blogList.size());
                 }while(booleans.containsKey(number));
