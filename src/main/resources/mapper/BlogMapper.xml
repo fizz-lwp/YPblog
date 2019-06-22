@@ -58,6 +58,36 @@
         <association property="user" column="user_id" select="com.blog.mapper.UserMapper.selectById"/>
     </resultMap>
 
+    <select id="selectBlogsOrderByPT" resultMap="blog_simple">
+        select * from blog
+        <if test="typeId != null">
+            where type_id = #{typeId}
+        </if>
+        order by publish_time desc
+        <if test="limit != null">
+            limit ${limit}
+        </if>
+    </select>
+
+    <select id="selectBlogsOrderByReadCount" resultMap="blog_simple">
+        select * from blog
+        <if test="typeId != null">
+            where type_id = #{typeId}
+        </if>
+        order by read_count desc
+        <if test="limit != null">
+            limit ${limit}
+        </if>
+    </select>
+
+    <select id="selectRecommendBlogs" resultMap="blog_simple">
+        select * from blog
+        where recommend = 1
+        <if test="typeId != null">
+            and type_id = #{typeId}
+        </if>
+    </select>
+
     <select id="selectHotest" parameterType="int" resultMap="blog_index">
         select * from blog order by read_count desc limit ${limit}
     </select>

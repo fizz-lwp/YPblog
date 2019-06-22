@@ -1,11 +1,15 @@
 package com.blog.service;
 import com.blog.entity.Blog;
 import com.blog.entity.Collect;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface BlogService {
 
+    List<Blog> getBlogsOrderByPT(Integer typeId,Integer num); // 获取最新博客集
+    List<Blog> getBlogsOrderByReadCount(Integer typeId,Integer num); // 获取热博客集
+    List<Blog> getRecommendBlogs(Integer typeId,Integer num); // 获取推荐博客集
     int editBlog(Blog blog); // 编辑博客
     List<Blog> getLatestBlogs(int limit); // 获取最新博客集
     List<Blog> getReadestBlogs(int limit); // 获取最热博客集

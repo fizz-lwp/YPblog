@@ -10,6 +10,9 @@ import java.util.List;
 @Component
 public interface BlogMapper {
 
+    List<Blog> selectBlogsOrderByPT(@Param("typeId")Integer typeId,@Param("limit")Integer num); // 获取最新博客集
+    List<Blog> selectBlogsOrderByReadCount(@Param("typeId")Integer typeId,@Param("limit")Integer num); // 获取热博客集
+    List<Blog> selectRecommendBlogs(@Param("typeId")Integer typeId); // 获取推荐博客集
     List<Blog> selectHotest(@Param("limit")int limit); // 查询 limit 条最热博客记录
     List<Blog> selectLatest(@Param("limit")int limit); // 查询 limit 条最新博客记录
     List<Blog> selectRecommend(@Param("limit")int limit); // 查询 limit 条推荐博客记录

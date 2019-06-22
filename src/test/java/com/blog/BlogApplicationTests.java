@@ -15,8 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -102,17 +104,7 @@ public class BlogApplicationTests {
 
     @Test
     public void testType(){
-        Reply reply = new Reply();
-        User sender = new User();
-        User receiver = new User();
-        Comment comment = new Comment();
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        reply.setSender(sender);
-        reply.setReceiver(receiver);
-        reply.setContent("hello");
-        reply.setPublishTime(timestamp);
-        reply.setComment(comment);
-        replyService.saveReply(reply);
+
     }
 
 }
