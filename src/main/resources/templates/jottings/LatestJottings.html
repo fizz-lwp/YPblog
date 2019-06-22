@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        img{
+            width:30px;
+            height:30px;
+            margin-right:12px;
+        }
+        span{
+            float:left;
+            margin-top:8px;
+            margin-right:5px;
+        }
+        .first_p{
+            clear:both;
+        }
+        .count{
+            float:right;
+            color:#AAAAAA;
+        }
+
+        .page{
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- container -->
+    <div class="container">
+        <!-- bar && bar_login -->
+        <div th:if="not ${session.loginUser}">
+            <div th:replace="sample/sample::bar"></div>
+        </div>
+        <div th:if="${session.loginUser}">
+            <div th:replace="sample/sample::bar_login"></div>
+        </div>
+        <!-- introduce -->
+        <div class="jumbotron" style="height:210px;padding-top:10px;margin-bottom:0px;">
+            <h3>
+                个人博客
+            </h3>
+            <p>
+                这里是基于兴趣使然的个人博客开发小网站，什么功能都还没有，前端也莫得，后端也莫得，并发控制也莫得，安全控制也莫得。
+            </p>
+            <p>
+                <a class="btn btn-primary btn-large" href="#">了解更多</a>
+            </p>
+        </div>
+        <!-- blog -->
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="page-header" >
+                    <h3>最新更新</h3>
+                </div>
+                <div th:each="latestJotting:${latestJottings.getList()}" class="col-md-6 column">
+                    <img th:src="@{${latestJotting.user.headPhoto}}" style="float:left"/>
+                    <span class="label label-default" th:text="${latestJotting.type.name}"></span>
+                    <h4 th:text="${latestJotting.title}" style="float:left"></h4>
+                    <p class="count" th:text="${latestJotting.commentList.size()}+' 评论'"></p>
+                    <p class="count" th:text="${latestJotting.readCount}+' 浏览 ·'"></p>
+                    <p class="first_p" th:text="${latestJotting.summary}"></p>
+                    <p><a class="btn" href="#" th:href="@{/blog(id=${latestJotting.id})}">阅读博客</a></p>
+                </div>
+                <!--这里分页-->
+                <div class="page">
+                <ul class="pagination" >
+                    <li th:class="${session.pageNow == 1}?'disabled':''">
+                        <a href="#" th:href="@{/user/jottings/page(index=${session.pageNow}-1)}">Prev</a>
+                    </li>
+                    <li th:each="i :${#numbers.sequence(1,latestJottings.getPages())}"  th:class="${session.pageNow == i}?'active disable':''" >
+                        <a href="#"  th:href="@{/user/jottings/page(index=${i})}" th:text="${i}"> 1</a>
+                    </li>
+
+                    <li th:class="${session.pageNow == latestJottings.getPages()}?'disabled':''">
+                        <a href="#" th:href="@{/user/jottings/page(index=${session.pageNow}+1)}" >Next</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
