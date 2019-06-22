@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li th:each="type:${session.typeList}" class="active">
-                    <a href="#" th:text="${type.name}"></a>
+                    <a href="#" th:text="${type.name}" th:href="@{/user/blog/{id}(id=${type.id})}"></a>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li th:each="type:${session.typeList}" class="active">
-                    <a href="#" th:text="${type.name}"></a>
+                    <a href="#" th:text="${type.name}"  th:href="@{/user/blog/{id}(id=${type.id})}"></a>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
