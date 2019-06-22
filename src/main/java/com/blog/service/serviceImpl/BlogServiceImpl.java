@@ -105,5 +105,9 @@ public class BlogServiceImpl implements BlogService {
     public int saveBlog(Blog blog){
         return blogMapper.insert(blog);
     }
+    @Override
+    public int updateBlog(Blog blog){
+        return blogMapper.update(blog);
+    }
 
 }

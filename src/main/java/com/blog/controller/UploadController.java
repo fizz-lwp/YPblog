@@ -21,7 +21,7 @@ public class UploadController {
     @RequestMapping("/uploadFile")
     public @ResponseBody Map<String,Object> demo(@RequestParam(value = "editormd-image-file", required = false) MultipartFile file, HttpServletRequest request) {
         Map<String,Object> resultMap = new HashMap<>();
-        System.out.println(request.getContextPath());
+//        System.out.println(request.getContextPath());
         String fileName = file.getOriginalFilename();
         //保存
         try {
