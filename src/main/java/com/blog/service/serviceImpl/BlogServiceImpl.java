@@ -29,7 +29,7 @@ public class BlogServiceImpl implements BlogService {
             return blogMapper.selectRecommendBlogs(typeId);
         }
         else{
-            Random random = new Random(47);
+            Random random = new Random(System.currentTimeMillis());
             List<Blog> blogList = blogMapper.selectRecommendBlogs(typeId); // all or 2*num ?
             List<Blog> result = new ArrayList<>(num);
             Map<Integer,Integer> booleans = new HashMap<>(num);
