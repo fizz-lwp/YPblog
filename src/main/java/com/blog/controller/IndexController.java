@@ -19,7 +19,7 @@ public class IndexController {
     @Autowired
     BlogService blogService;
 
-    @RequestMapping("index.html")
+    @RequestMapping({"index.html","/"})
     public String index(HttpSession session, Model model){
         List<Type> typeList = typeService.getAllTypes();
         List<Blog> latestBlogs = blogService.getLatestBlogs(2);
