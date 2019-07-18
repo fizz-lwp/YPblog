@@ -39,6 +39,9 @@
     <resultMap id="blog_simple" type="Blog">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
+        <result property="text" column="text"/>
+        <result property="content" column="content"/>
+        <result property="summary" column="summary"/>
         <result property="publishTime" column="publish_time"/>
         <result property="readCount" column="read_count"/>
         <association property="type" column="type_id" select="com.blog.mapper.TypeMapper.selectById"/>
@@ -146,11 +149,8 @@
           <if test="recommend != null">
             recommend = #{recommend},
           </if>
-          <if test="readCouont != null">
-            read_count = #{readCouont},
-          </if>
-          <if test="collectCouont != null">
-            collect_count = #{collectCouont},
+          <if test="readCount != null">
+            read_count = #{readCount},
           </if>
           <if test="content != null and content != ''">
             content = #{content},
@@ -159,7 +159,10 @@
             last_modify_time = #{lastModifyTime},
           </if>
           <if test="text != null and text != ''">
-              text = #{text},
+            text = #{text},
+          </if>
+          <if test="summary != null and summary != ''">
+              summary = #{summary},
           </if>
       </trim>
       where id = #{id}

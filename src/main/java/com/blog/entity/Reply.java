@@ -1,5 +1,5 @@
 package com.blog.entity;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Reply {
 
@@ -7,7 +7,7 @@ public class Reply {
     private User sender;
     private User receiver;
     private String content;
-    private Timestamp publishTime;
+    private LocalDateTime publishTime;
     private Comment comment;
 
     @Override
@@ -52,10 +52,10 @@ public class Reply {
     public void setContent(String content) {
         this.content = content;
     }
-    public Timestamp getPublishTime() {
+    public LocalDateTime getPublishTime() {
         return publishTime;
     }
-    public void setPublishTime(Timestamp publishTime) {
+    public void setPublishTime(LocalDateTime publishTime) {
         this.publishTime = publishTime;
     }
 

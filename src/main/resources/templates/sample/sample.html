@@ -53,10 +53,10 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a th:href="@{/edit_blog.html}">写文章</a>
+                    <a th:href="@{/edit_blog}">写文章</a>
                 </li>
                 <li>
-                    <a th:href="@{/userinfo(param_list='blog',index=1)}" th:text="${session.loginUser.name}"></a>
+                    <a th:href="@{/userinfo}" th:text="${session.loginUser.name}"></a>
                 </li>
             </ul>
         </div>

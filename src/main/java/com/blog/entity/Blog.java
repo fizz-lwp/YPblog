@@ -1,5 +1,5 @@
 package com.blog.entity;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +8,12 @@ public class Blog {
     private Integer id;
     private String title;
     private String summary;
-    private Timestamp publishTime;
+    private LocalDateTime publishTime;
     private Integer recommend;
     private Integer readCount;
     private String content;
     private String text;
-    private Timestamp lastModifyTime;
+    private LocalDateTime lastModifyTime;
     private Type type;
     private User user;
     private List<Comment> commentList = new ArrayList<>();
@@ -38,6 +38,18 @@ public class Blog {
                 '}';
     }
 
+    public LocalDateTime getPublishTime() {
+        return publishTime;
+    }
+    public void setPublishTime(LocalDateTime publishTime) {
+        this.publishTime = publishTime;
+    }
+    public LocalDateTime getLastModifyTime() {
+        return lastModifyTime;
+    }
+    public void setLastModifyTime(LocalDateTime lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
+    }
     public List<Collect> getCollectList() {
         return collectList;
     }
@@ -80,12 +92,6 @@ public class Blog {
     public void setTitle(String title) {
         this.title = title;
     }
-    public Timestamp getPublishTime() {
-        return publishTime;
-    }
-    public void setPublishTime(Timestamp publishTime) {
-        this.publishTime = publishTime;
-    }
     public Integer getRecommend() {
         return recommend;
     }
@@ -109,12 +115,6 @@ public class Blog {
     }
     public void setContent(String content) {
         this.content = content;
-    }
-    public Timestamp getLastModifyTime() {
-        return lastModifyTime;
-    }
-    public void setLastModifyTime(Timestamp lastModifyTime) {
-        this.lastModifyTime = lastModifyTime;
     }
 
 }

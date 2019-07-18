@@ -1,5 +1,5 @@
 package com.blog.entity;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ public class Comment {
     private Integer id;
     private User user;
     private String content;
-    private Timestamp publishTime;
+    private LocalDateTime publishTime;
     private Blog blog;
     private List<Reply> replyList = new ArrayList<>();
 
@@ -48,10 +48,10 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
-    public Timestamp getPublishTime() {
+    public LocalDateTime getPublishTime() {
         return publishTime;
     }
-    public void setPublishTime(Timestamp publishTime) {
+    public void setPublishTime(LocalDateTime publishTime) {
         this.publishTime = publishTime;
     }
     public List<Reply> getReplyList() {

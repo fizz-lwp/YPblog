@@ -1,4 +1,5 @@
 package com.blog.entity;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,11 +14,13 @@ public class User {
     private String signature;
     private String headPhoto;
     private String status;
+    private LocalDateTime registerTime;
     private Role role;
     private List<Blog> blogList = new ArrayList<>();
     private List<Comment> commentList = new ArrayList<>();
     private List<Reply> replyList = new ArrayList<>();
     private List<Collect> collectList = new ArrayList<>();
+
     @Override
     public String toString() {
         return "User{" +
@@ -29,29 +32,34 @@ public class User {
                 ", email='" + email + '\'' +
                 ", signature='" + signature + '\'' +
                 ", headPhoto='" + headPhoto + '\'' +
+                ", status='" + status + '\'' +
+                ", registerTime=" + registerTime +
                 ", role=" + role +
                 ", blogList=" + blogList +
                 ", commentList=" + commentList +
                 ", replyList=" + replyList +
+                ", collectList=" + collectList +
                 '}';
     }
 
+    public LocalDateTime getRegisterTime() {
+        return registerTime;
+    }
+    public void setRegisterTime(LocalDateTime registerTime) {
+        this.registerTime = registerTime;
+    }
     public List<Collect> getCollectList() {
         return collectList;
     }
-
     public void setCollectList(List<Collect> collectList) {
         this.collectList = collectList;
     }
-
     public String getStatus() {
         return status;
     }
-
     public void setStatus(String status) {
         this.status = status;
     }
-
     public List<Reply> getReplyList() {
         return replyList;
     }

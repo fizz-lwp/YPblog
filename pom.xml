@@ -50,7 +50,13 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.0.1</version>
         </dependency>
-        <!-- mysql 依赖 -->
+        <!-- mybatis 数据库字段类型映射,支持 Java8 LocalDateTime 类 -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-typehandlers-jsr310</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!-- mysql 依赖较高版本,支持 Java8 LocalDateTime 类 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

@@ -14,8 +14,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.CropImageFilter;
+import java.awt.image.FilteredImageSource;
+import java.awt.image.ImageFilter;
+import java.io.File;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -94,9 +103,18 @@ public class BlogApplicationTests {
 
     @Test
     public void testCount(){
-        System.out.println(userService.countUser());
-        System.out.println(blogService.countBlog());
-        System.out.println(typeService.countType());
+        User user = userMapper.selectFullById(1);
+        System.out.println(user.getRegisterTime());
+        System.out.println(user.getRegisterTime().getYear());
+        System.out.println(user.getRegisterTime().getMonth());
+        System.out.println(user.getRegisterTime().getDayOfMonth());
+        System.out.println(user.getRegisterTime().getHour());
+        System.out.println(user.getRegisterTime().getMinute());
+        System.out.println(user.getRegisterTime().getSecond());
+//        User user = new User();
+//        user.setId(1);
+//        user.setRegisterTime(LocalDateTime.now());
+//        userMapper.update(user);
     }
 
     @Test
