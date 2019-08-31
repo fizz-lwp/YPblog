@@ -50,6 +50,16 @@
                 }
             };
         });
+        function validateEmail(){
+            alert("test");
+            var x=document.forms["emailForm"]["email"].value;
+            var atpos=x.indexOf("@");
+            var dotpos=x.lastIndexOf(".");
+            if (atpos &lt; 1 || dotpos &lt; atpos+2 || dotpos+2 &gt;= x.length){
+                alert("不是一个有效的 e-mail 地址");
+                return false;
+            }
+        }
     </script>
     <link rel="stylesheet" th:href="@{/css/jquery.Jcrop.css}" type="text/css" />
     <style type="text/css">
@@ -102,9 +112,9 @@
                 </form>
             </div>
             <div class="tab-pane fade" id="email">
-                <form th:action="@{/editUserInfo/{col}(col='email')}">
+                <form name="emailForm" th:action="@{/editUserInfo/{col}(col='email')}" onsubmit="return validateEmail();">
                     <input name="email" type="text" placeholder="邮箱" class="form-control" style="margin-left:35%;margin-top:40px;width:30%;"/>
-                    <button class="btn btn-default" style="margin-left:48%;margin-top:20px;" type="submit">提交</button>
+                    <button class="btn btn-default" style="margin-left:48%;margin-top:20px;" type="button" onclick="validateEmail();">提交</button>
                 </form>
             </div>
             <div class="tab-pane fade" id="head">

@@ -1,9 +1,6 @@
 package com.blog;
 import com.blog.entity.*;
-import com.blog.mapper.BlogMapper;
-import com.blog.mapper.CommentMapper;
-import com.blog.mapper.ReplyMapper;
-import com.blog.mapper.UserMapper;
+import com.blog.mapper.*;
 import com.blog.service.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -36,6 +33,8 @@ public class BlogApplicationTests {
     BlogMapper blogMapper;
     @Autowired
     ReplyMapper replyMapper;
+    @Autowired
+    TypeMapper typeMapper;
     @Autowired
     CommentMapper commentMapper;
     @Autowired
@@ -132,6 +131,11 @@ public class BlogApplicationTests {
             booleans.put(number,null);
             result.add(blogList.get(number));
         }
+    }
+
+    @Test
+    public void testGetTypeByName(){
+        typeMapper.selectByName("随笔");
     }
 
 }

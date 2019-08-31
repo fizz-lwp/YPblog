@@ -16,6 +16,8 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 registry.addViewController("/login.html").setViewName("default/login");
                 registry.addViewController("/forget_pwd.html").setViewName("default/forget_pwd");
                 registry.addViewController("/edit_userinfo.html").setViewName("login_only/edit_userinfo");
+                registry.addViewController("/test.html").setViewName("test/test");
+                registry.addViewController("/new_index.html").setViewName("default/new_index");
             }
 
             // 配置系统资源的虚拟路径

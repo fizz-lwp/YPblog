@@ -1,0 +1,116 @@
+a:hover{
+    cursor: pointer;
+}
+.bar{
+    width: 100%;
+    height: 50px;
+    background-color: rgba(98, 193, 255, 0.93);
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+.bar li a{
+    text-decoration: none;
+    font-size: 14px;
+}
+li a{
+    color: black;
+}
+.logo{
+    float: left;
+    height: 100%;
+    width: 14%;
+}
+.logo img{
+    margin-top: 3px;
+    margin-left: 5px;
+}
+.column{
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+.column ul{
+    margin-top: 13px;
+}
+.column li{
+    list-style-type: none;
+    display: inline;
+    margin-left: 10px;
+}
+.column li:hover{
+    cursor: pointer;
+}
+.search{
+    float: left;
+    width: 240px;
+}
+.search-input{
+    height: 22px;
+    width: 160px;
+    padding-left: 5px;
+    margin-top: 14px;
+    border: 0;
+    border-radius: 2px;
+    outline: none;
+    background-color: white;
+    color: grey;
+    font-family: 华文细黑;
+    font-size: 10px;
+}
+.user{
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+.user img{
+    height: 30px;
+    width: 30px;
+}
+.user a{
+    margin-left: 12px;
+    font-size: 14px;
+    color: black;
+}
+.write-blog{
+    text-decoration: none;
+}
+.hide-msg-container{
+    width: 90px;
+    height: 190px;
+    position: absolute;
+    display: none;
+    top: 30px;
+    left: 1140px;
+}
+.blank{
+    width: 90px;
+    height: 20px;
+}
+.hide-msg{
+    width: 90px;
+    height: 170px;
+    background-color: white;
+    border: 1px solid rgba(188, 188, 188, 0.24);
+}
+.hide-user-head-container{
+    width: 90px;
+    height: 340px;
+    position: absolute;
+    display: none;
+    top: 30px;
+    left: 1156px;
+}
+.hide-user-head{
+    width: 90px;
+    height: 320px;
+    background-color: white;
+    border: 1px solid rgba(188, 188, 188, 0.24);
+}
+.hide-ul li{
+    list-style-type: none;
+    margin-top: 10px;
+}
+.hide-ul a:hover{
+    color: rgb(255, 58, 61);
+}

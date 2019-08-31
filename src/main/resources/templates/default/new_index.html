@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" th:href="@{/css/all.css}" />
+    <link rel="stylesheet" th:href="@{/css/container85.css}" />
+    <link rel="stylesheet" th:href="@{/css/headbar.css}" />
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- container -->
+<div class="container85">
+    <!-- bar && bar_login -->
+    <div class="bar">
+        <div class="logo">
+            <a><img src="../../img/logo.png"/></a>
+        </div>
+        <div class="column">
+            <ul>
+                <li><a>首页</a></li>
+                <li><a>博客</a></li>
+                <li><a>学院</a></li>
+                <li><a>下载</a></li>
+                <li><a>论坛</a></li>
+                <li><a>APP</a></li>
+                <li><a>问答</a></li>
+                <li><a>商城</a></li>
+                <li><a>活动</a></li>
+                <li><a>专题</a></li>
+                <li><a>招聘</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <input class="search-input" placeholder="搜索网站内的一切..."/>
+        </div>
+        <div class="user">
+            <a href="" style="text-decoration: none">写博客</a>
+            <a class="msg" style="text-decoration: none">消息</a>
+            <div class="hide-msg-container">
+                <div class="blank"></div>
+                <div class="hide-msg">
+                    <ul class="hide-ul">
+                        <li><a>评论</a></li>
+                        <li><a>关注</a></li>
+                        <li><a>点赞</a></li>
+                        <li><a>回答</a></li>
+                        <li><a>系统通知</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a class="user-head" href=""><img src="../../img/default_head.png"/></a>
+            <div class="hide-user-head-container">
+                <div class="blank"></div>
+                <div class="hide-user-head">
+                    <ul class="hide-ul">
+                        <li><a>我的关注</a></li>
+                        <li><a>我的收藏</a></li>
+                        <li><a>个人中心</a></li>
+                        <li><a>账号设置</a></li>
+                        <li><a>我的博客</a></li>
+                        <li><a>管理博客</a></li>
+                        <li><a>我的学院</a></li>
+                        <li><a>我的下载</a></li>
+                        <li><a>帮助</a></li>
+                        <li><a>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <!-- left -->
+        <div class="left">
+            <div class="left-nav">
+                <div class="left-nav-blank"></div>
+                <ul>
+                    <li>推荐</li>
+                    <li>关注</li>
+                    <li>程序人生</li>
+                    <li>Java</li>
+                    <li>前端</li>
+                    <li>架构</li>
+                    <li>数据库</li>
+                    <li>游戏开发</li>
+                    <li>运维</li>
+                    <li>安全</li>
+                    <li>云计算</li>
+                    <li>物联网</li>
+                </ul>
+            </div>
+        </div>
+        <!-- middle -->
+        <div class="middle-content">
+            <div class="mc-up">
+                <!-- slide -->
+                <div class="slide-container">
+                    <div class="slide-element">
+                        <a><img src="../../img/1.jpg"/></a>
+                    </div>
+                    <div class="slide-element">
+                        <a><img src="../../img/2.jpg"/></a>
+                    </div>
+                    <div class="slide-element">
+                        <a><img src="../../img/3.jpg"/></a>
+                    </div>
+                    <div class="dot-container">
+                        <span class="dot" onclick="currentSlide(0)"></span>
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                    </div>
+                </div>
+                <!-- recommend -->
+                <div class="recommend">
+                    <div class="up">
+                        <a><img src="../../img/scen@3.jpg"/></a>
+                    </div>
+                    <div class="down">
+                        <a><img src="../../img/scen@4.jpg"/></a>
+                    </div>
+                </div>
+            </div>
+            <!-- blog -->
+            <div class="mc-down-blog">
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="blog-element">
+                    <a class="title" style="text-decoration: none;"><b>是否使用兴奋剂，到底谁能说了算？</b></a>
+                    <p class="abstract">By超神经场景描述：2019游泳世锦赛期间，澳大利亚泳协和孙杨的几次风波，让全球的目光都瞄准了兴奋剂。兴...</p>
+                    <div class="blog-msg">
+                        <a><img class="head-photo" src="../../img/default_head.png"/></a>
+                        <a style="text-decoration: none;">hyperai</a>
+                        <text>07月30日</text>
+                        <text>阅读</text>
+                        <text>20</text>
+                        <text>评论</text>
+                        <text>1</text>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="page">
+                    <text>本页为第 2 页，</text>
+                    <text>共 10 页，</text>
+                    <button type="submit">上一页</button>
+                    <button type="submit">下一页</button>
+                    <form style="display: inline;"><text>跳转至第</text><input/><text>页</text></form>
+                </div>
+            </div>
+        </div>
+        <!-- right -->
+        <div class="right-recommend">
+            <div class="bloggers">
+                <div class="title">
+                    <div class="icon"></div>
+                    <div class="text"><h4>博客专家</h4></div>
+                </div>
+                <div class="bloggers-user">
+                    <div class="user-up">
+                        <div class="user-up-left">
+                            <a><img src="../../img/default_head.png"/></a>
+                        </div>
+                        <div class="user-up-right">
+                            <a><b>说好不能打脸</b></a><br/>
+                            <text>高级架构师</text>
+                        </div>
+                    </div>
+                    <div class="user-down">
+                        为了生活不停奔波的IT工程师一枚,...
+                    </div>
+                </div>
+                <div class="bloggers-user">
+                    <div class="user-up">
+                        <div class="user-up-left">
+                            <a><img src="../../img/default_head.png"/></a>
+                        </div>
+                        <div class="user-up-right">
+                            <a><b>说好不能打脸</b></a><br/>
+                            <text>高级架构师</text>
+                        </div>
+                    </div>
+                    <div class="user-down">
+                        为了生活不停奔波的IT工程师一枚,...
+                    </div>
+                </div>
+                <div class="bloggers-user">
+                    <div class="user-up">
+                        <div class="user-up-left">
+                            <a><img src="../../img/default_head.png"/></a>
+                        </div>
+                        <div class="user-up-right">
+                            <a><b>说好不能打脸</b></a><br/>
+                            <text>高级架构师</text>
+                        </div>
+                    </div>
+                    <div class="user-down">
+                        为了生活不停奔波的IT工程师一枚,...
+                    </div>
+                </div>
+            </div>
+            <div class="one">
+                <div class="title">
+                    <div class="icon"></div>
+                    <div class="text"><h4>今日推荐</h4></div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+                <div class="one-content">
+                    <div class="one-left">
+                        <a><img class="one-img" src="../../img/scen@4.jpg"/></a>
+                    </div>
+                    <div class="one-right">
+                        <a style="text-decoration: none;"><b>AI“生死”落地:谁有资格入选AI Top 30+</b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="website-msg">
+                <div class="qr-code">
+                    <img src="../../img/qr-code1.jpg"/>
+                    <img src="../../img/qr-code2.jpg"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <text>程序人生</text>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <text>最新资讯</text>
+                </div>
+                <hr/>
+                <div class="communication">
+                    <a>QQ客服</a>
+                    &nbsp;<a>kefu@blog.net</a><br/>
+                    <a>客服论坛</a>
+                    <a>400-660-0108</a>
+                </div>
+                <hr/>
+                <div class="copyright">
+                    &nbsp;&nbsp;&nbsp;©2019-2019 ××××××网络技术有限公司
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 需要对 DOM 进行操作的脚本需要放置在元素的后面等待元素加载完成才能执行脚本 -->
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/js/bar.js}"></script>
+<script th:src="@{/js/left-nav.js}"></script>
+</body>
+</html>
